@@ -40,7 +40,7 @@ img {
 }
 
 /* ============================================================
-   NAVBAR
+   NAVBAR — Desktop
    ============================================================ */
 .header {
   position: absolute;
@@ -76,13 +76,169 @@ img {
   opacity: 0.65;
 }
 
-.wedding-nav .navbar-toggler {
-  border-color: rgba(59, 33, 25, 0.5);
-  margin: 0 auto;
+/* ============================================================
+   MOBILE HAMBURGER BUTTON
+   ============================================================ */
+.mobile-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 12px rgba(67, 36, 22, 0.15);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.wedding-nav .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%233b2119' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.mobile-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 18px rgba(67, 36, 22, 0.22);
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--brown);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ============================================================
+   SIDEBAR OVERLAY
+   ============================================================ */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ============================================================
+   SIDEBAR DRAWER (Mobile Nav)
+   ============================================================ */
+.sidebar-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  max-width: 85vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 999;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  box-shadow: 4px 0 24px rgba(67, 36, 22, 0.12);
+}
+
+.sidebar-nav.active {
+  transform: translateX(0);
+}
+
+/* Sidebar header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid rgba(67, 36, 22, 0.08);
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--brown);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-close:hover {
+  background: rgba(67, 36, 22, 0.08);
+}
+
+.sidebar-title {
+  font-family: var(--font-script);
+  font-size: 22px;
+  color: var(--brown);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Sidebar menu links */
+.sidebar-menu {
+  list-style: none;
+  padding: 12px 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  border-bottom: 1px solid rgba(67, 36, 22, 0.05);
+}
+
+.sidebar-menu li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-menu a {
+  display: block;
+  padding: 14px 28px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a:focus {
+  background: rgba(67, 36, 22, 0.06);
+  padding-left: 34px;
+  text-decoration: none;
+  color: var(--brown);
+}
+
+/* Prevent body scroll when sidebar is open */
+body.sidebar-open {
+  overflow: hidden;
 }
 
 /* ============================================================
@@ -181,7 +337,7 @@ img {
 
 .ornament-bottom-left {
   bottom: 0%;
-  left: 0%;
+  left: -1%;
   height: 55%;
   max-height: 460px;
   width: auto;
@@ -190,7 +346,7 @@ img {
 
 .ornament-bottom-right {
   bottom: 0%;
-  right: 0%;
+  right: -1%;
   height: 55%;
   max-height: 460px;
   width: auto;
@@ -245,7 +401,7 @@ img {
 }
 
 /* ============================================================
-   RESPONSIVE — large tablets / small desktops
+   RESPONSIVE — large tablets / small desktops (≤ 1200px)
    ============================================================ */
 @media (max-width: 1200px) {
   .hero-names {
@@ -266,9 +422,17 @@ img {
    RESPONSIVE — tablets (≤ 992px)
    ============================================================ */
 @media (max-width: 992px) {
-  .wedding-nav .nav-link {
-    font-size: 13px;
-    padding: 6px 10px !important;
+  /* Hide desktop nav, show hamburger & sidebar */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .sidebar-nav {
+    display: flex;
   }
 
   .hero-names {
@@ -283,6 +447,10 @@ img {
 
   .hero-logo {
     width: 135px;
+  }
+
+  .hero-content {
+    margin-top: 100px;
   }
 
   .ornament-bottom-left {
@@ -300,19 +468,6 @@ img {
    RESPONSIVE — small tablets / large phones (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-  .wedding-nav .navbar-collapse {
-    background-color: rgba(204, 126, 46, 0.95);
-    padding: 16px;
-    border-radius: 8px;
-    margin-top: 8px;
-  }
-
-  .wedding-nav .nav-link {
-    font-size: 14px;
-    padding: 10px 16px !important;
-    color: var(--white) !important;
-  }
-
   .hero-names {
     font-size: 48pt;
   }
@@ -328,7 +483,8 @@ img {
   }
 
   .hero-content {
-    padding: 100px 20px 70px;
+    padding: 80px 20px 70px;
+    margin-top: 60px;
   }
 
   .ornament-top-center {
@@ -362,38 +518,73 @@ img {
    RESPONSIVE — phones (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
-  .hero-names {
-    font-size: 34pt;
-  }
+ .hero-names {
+  font-size: 43pt;
+  line-height: 1.05;
+  white-space: nowrap;
+}
 
-  .hero-wedding-of,
-  .hero-date {
-    font-size: 12pt;
-    letter-spacing: 3px;
-  }
+  .hero-wedding-of {
+  font-size: 14pt;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
 
-  .hero-logo {
-    width: 95px;
-    margin-bottom: 18px;
-  }
+.hero-date {
+  font-size: 13pt;
+  letter-spacing: 4px;
+  margin-top: 22px;
+}
 
-  .hero-content {
-    padding: 90px 16px 60px;
-  }
+ .hero-logo {
+  width: 175px;
+  max-width: 52vw;
+  margin-bottom: 30px;
+}
 
-  .ornament-top-center {
-    width: 70%;
-  }
+ .hero-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 35px;
+  margin-top: 0;
+  justify-content: center;
+}
 
-  .ornament-bottom-left {
-    height: 28%;
-    max-height: 240px;
-  }
+.ornament-top-center {
+  top: -1%;
+  left: 50%;
+  width: 58%;
+  max-width: none;
+}
 
-  .ornament-bottom-right {
-    height: 28%;
-    max-height: 240px;
-  }
+.ornament-top-left {
+  top: -1%;
+  left: -12%;
+  width: 48%;
+  opacity: 0.8;
+}
+
+.ornament-top-right {
+  top: -1%;
+  right: -12%;
+  width: 48%;
+  opacity: 0.8;
+}
+
+.ornament-bottom-left {
+  bottom: -1%;
+  left: -8%;
+  height: 30%;
+  max-height: 260px;
+}
+
+.ornament-bottom-right {
+  bottom: -1%;
+  right: -8%;
+  height: 30%;
+  max-height: 260px;
+}
 
   .ornament-right {
     width: 24px;

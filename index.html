@@ -25,13 +25,17 @@
 <body>
   <!-- ========== NAVBAR ========== -->
   <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light wedding-nav" id="mainNav">
+    <!-- Mobile hamburger button -->
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Desktop navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light wedding-nav desktop-nav" id="mainNav" aria-label="Main navigation">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#weddingNav"
-          aria-controls="weddingNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="weddingNav">
+        <div class="navbar-collapse justify-content-center">
           <ul class="navbar-nav text-center">
             <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="#wedding">THE WEDDING</a></li>
@@ -43,6 +47,26 @@
           </ul>
         </div>
       </div>
+    </nav>
+
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Mobile sidebar drawer -->
+    <nav class="sidebar-nav" id="sidebarNav" aria-label="Mobile navigation">
+      <div class="sidebar-header">
+        <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">&times;</button>
+        <p class="sidebar-title">Hani &amp; Andi</p>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#wedding">THE WEDDING</a></li>
+        <li><a href="#location">LOCATION</a></li>
+        <li><a href="#gallery">GALLERY</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#gift">GIFT</a></li>
+        <li><a href="#messages">PERSONAL MESSAGES</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -75,7 +99,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 
 </html>
