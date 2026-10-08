@@ -1,0 +1,405 @@
+:root {
+  --orange: #e77b2f;
+  --orange-deep: #d86524;
+  --orange-hero: #cc7e2e;
+  --cream: #F7E19F;
+  --brown: #432416;
+  --brown-soft: #6a3a27;
+  --white: #ffffff;
+
+  --font-serif: "Libre Baskerville", "Baskerville", "Baskerville MT", Georgia, serif;
+  --font-script: "Madina", "Great Vibes", "Brittany Signature", "Brush Script MT",
+    "Segoe Script", cursive;
+  --font-sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.wedding-nav {
+  background: transparent !important;
+  padding: 14px 0;
+}
+
+.wedding-nav .navbar-nav {
+  gap: 2px;
+}
+
+.wedding-nav .nav-link {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brown) !important;
+  letter-spacing: 0.5px;
+  padding: 8px 14px !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.wedding-nav .nav-link:hover,
+.wedding-nav .nav-link:focus {
+  opacity: 0.65;
+}
+
+.wedding-nav .navbar-toggler {
+  border-color: rgba(59, 33, 25, 0.5);
+  margin: 0 auto;
+}
+
+.wedding-nav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%233b2119' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--orange-hero);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/bg-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+
+.hero-ornament {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ornament-top-left {
+  top: -10vw;
+  left: -4%;
+  width: 39%;
+  max-width: none;
+}
+
+.ornament-top-center {
+  top: -8vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 43%;
+  max-width: none;
+}
+
+.ornament-top-right {
+  top: -10vw;
+  right: -4%;
+  width: 39%;
+  max-width: none;
+}
+
+.ornament-right,
+.ornament-left {
+  top: 0;
+  height: 100%;
+  width: 42px;
+  object-fit: cover;
+  object-position: center;
+
+  /* Fade transparan di atas dan bawah */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 10%,
+    black 18%,
+    black 82%,
+    rgba(0, 0, 0, 0.4) 92%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 10%,
+    black 18%,
+    black 82%,
+    rgba(0, 0, 0, 0.4) 92%,
+    transparent 100%
+  );
+}
+
+.ornament-right {
+  right: 2%;
+}
+
+.ornament-left {
+  left: 2%;
+  transform: scaleX(-1);
+}
+
+.ornament-bottom-left {
+  bottom: 0%;
+  left: 0%;
+  height: 55%;
+  max-height: 460px;
+  width: auto;
+  transform: scaleX(-1);
+}
+
+.ornament-bottom-right {
+  bottom: 0%;
+  right: 0%;
+  height: 55%;
+  max-height: 460px;
+  width: auto;
+}
+
+/* ============================================================
+   HERO CONTENT (logo + text)
+   ============================================================ */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 90px 24px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 160px;
+}
+
+.hero-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 54px;
+}
+
+.hero-wedding-of {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: 5px;
+  margin-bottom: 8px;
+}
+
+.hero-names {
+  font-family: var(--font-script);
+  font-size: 120pt;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-date {
+  font-family: var(--font-serif);
+  font-size: 28pt;
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: 6px;
+  margin-top: 3px;
+}
+
+/* ============================================================
+   RESPONSIVE — large tablets / small desktops
+   ============================================================ */
+@media (max-width: 1200px) {
+  .hero-names {
+    font-size: 90pt;
+  }
+
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 22pt;
+  }
+
+  .hero-logo {
+    width: 155px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — tablets (≤ 992px)
+   ============================================================ */
+@media (max-width: 992px) {
+  .wedding-nav .nav-link {
+    font-size: 13px;
+    padding: 6px 10px !important;
+  }
+
+  .hero-names {
+    font-size: 68pt;
+  }
+
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 18pt;
+    letter-spacing: 5px;
+  }
+
+  .hero-logo {
+    width: 135px;
+  }
+
+  .ornament-bottom-left {
+    height: 45%;
+    max-height: 380px;
+  }
+
+  .ornament-bottom-right {
+    height: 45%;
+    max-height: 380px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — small tablets / large phones (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .wedding-nav .navbar-collapse {
+    background-color: rgba(204, 126, 46, 0.95);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .wedding-nav .nav-link {
+    font-size: 14px;
+    padding: 10px 16px !important;
+    color: var(--white) !important;
+  }
+
+  .hero-names {
+    font-size: 48pt;
+  }
+
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 15pt;
+    letter-spacing: 4px;
+  }
+
+  .hero-logo {
+    width: 115px;
+  }
+
+  .hero-content {
+    padding: 100px 20px 70px;
+  }
+
+  .ornament-top-center {
+    width: 55%;
+    max-width: 360px;
+  }
+
+  .ornament-top-left {
+    width: 45%;
+    opacity: 0.15;
+  }
+  .ornament-top-right {
+    width: 45%;
+    opacity: 0.15;
+  }
+
+  .ornament-bottom-left {
+    height: 35%;
+    max-height: 300px;
+    left: -2%;
+  }
+
+  .ornament-bottom-right {
+    height: 35%;
+    max-height: 380px;
+    right: -2%;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — phones (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .hero-names {
+    font-size: 34pt;
+  }
+
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 12pt;
+    letter-spacing: 3px;
+  }
+
+  .hero-logo {
+    width: 95px;
+    margin-bottom: 18px;
+  }
+
+  .hero-content {
+    padding: 90px 16px 60px;
+  }
+
+  .ornament-top-center {
+    width: 70%;
+  }
+
+  .ornament-bottom-left {
+    height: 28%;
+    max-height: 240px;
+  }
+
+  .ornament-bottom-right {
+    height: 28%;
+    max-height: 240px;
+  }
+
+  .ornament-right {
+    width: 24px;
+  }
+
+  .ornament-left {
+    width: 24px;
+  }
+}
