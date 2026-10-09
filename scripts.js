@@ -72,6 +72,79 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (diff === 0) clearInterval(id);
 	}
 
-	tick();
-	const id = setInterval(tick, 1000);
+	const id = setInterval(tick, 1000); // create the timer first...
+	tick(); // ...then run the first update
+})();
+
+(function () {
+	const track = document.getElementById("galleryTrack");
+	const prev = document.getElementById("galleryPrev");
+	const next = document.getElementById("galleryNext");
+	if (!track || !prev || !next) return;
+
+	const originals = Array.from(track.querySelectorAll(".g-item"));
+	const N = originals.length;
+	if (N === 0) return;
+
+	/* ---- 1. Build 3 sets: [clones] [originals] [clones] ---- */
+	function makeClones() {
+		return originals.map((el, i) => {
+			const c = el.cloneNode(true);
+			c.removeAttribute("data-fancybox"); // keep the lightbox gallery free of duplicates
+			c.setAttribute("aria-hidden", "true");
+			c.setAttribute("tabindex", "-1");
+			c.dataset.clone = "true";
+			c.addEventListener("click", (e) => {
+				// a clone opens its original in the lightbox
+				e.preventDefault();
+				originals[i].click();
+			});
+			return c;
+		});
+	}
+	makeClones().forEach((c) => track.insertBefore(c, originals[0]));
+	makeClones().forEach((c) => track.appendChild(c));
+
+	const step = () => originals[0].getBoundingClientRect().width;
+
+	/* instant scroll without snapping or smooth animation */
+	function jumpTo(left) {
+		track.style.scrollSnapType = "none";
+		track.scrollTo({ left, behavior: "instant" });
+		requestAnimationFrame(() => (track.style.scrollSnapType = ""));
+	}
+
+	let index = N; // position in the 3N list; N = first original
+	jumpTo(N * step());
+
+	/* ---- 2. Buttons: always one photo at a time ---- */
+	function go(delta) {
+		index += delta;
+		track.scrollTo({ left: index * step(), behavior: "smooth" });
+	}
+	next.addEventListener("click", () => go(1));
+	prev.addEventListener("click", () => go(-1));
+
+	/* ---- 3. After scrolling stops, jump back to the middle set if we are in a clone ---- */
+	let timer;
+	track.addEventListener(
+		"scroll",
+		() => {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				let i = Math.round(track.scrollLeft / step());
+				if (i < N) i += N;
+				else if (i >= 2 * N) i -= N;
+				if (i !== Math.round(track.scrollLeft / step())) jumpTo(i * step());
+				index = i;
+			}, 120);
+		},
+		{ passive: true },
+	);
+
+	/* ---- 4. Keep the position correct on resize ---- */
+	window.addEventListener("resize", () => {
+		index = N + (((index % N) + N) % N);
+		jumpTo(index * step());
+	});
 })();
