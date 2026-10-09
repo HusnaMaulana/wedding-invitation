@@ -49,3 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+(function () {
+	const timer = document.getElementById("countdownTimer");
+	if (!timer) return;
+
+	const target = new Date(timer.dataset.target).getTime();
+	const els = {
+		days: timer.querySelector('[data-unit="days"]'),
+		hours: timer.querySelector('[data-unit="hours"]'),
+		minutes: timer.querySelector('[data-unit="minutes"]'),
+		seconds: timer.querySelector('[data-unit="seconds"]'),
+	};
+	const pad = (n) => String(n).padStart(2, "0");
+
+	function tick() {
+		const diff = Math.max(0, target - Date.now());
+		els.days.textContent = pad(Math.floor(diff / 86400000));
+		els.hours.textContent = pad(Math.floor(diff / 3600000) % 24);
+		els.minutes.textContent = pad(Math.floor(diff / 60000) % 60);
+		els.seconds.textContent = pad(Math.floor(diff / 1000) % 60);
+		if (diff === 0) clearInterval(id);
+	}
+
+	tick();
+	const id = setInterval(tick, 1000);
+})();
