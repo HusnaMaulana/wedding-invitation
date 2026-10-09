@@ -522,19 +522,30 @@ body.sidebar-open {
 }
 
 .couple-img-wrapper {
+  --zoom: 2.8;            /* how close to zoom */
+  --fx: 0.50;             /* fixed point of the zoom: horizontal (0 = left edge, 1 = right edge) */
+  --fy: 0.16;             /* fixed point of the zoom: vertical (0 = top, 1 = bottom) */
+  position: relative;
   width: var(--photo-w);
   height: var(--photo-h);
-  border-radius: 999px;          /* fully rounded top and bottom = oval */
+  border-radius: 999px;
   overflow: hidden;
   margin: 0;
   box-shadow: none;
 }
 .couple-img-wrapper img {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: calc(var(--fx) * (1 - var(--zoom)) * 100%);
+  top:  calc(var(--fy) * (1 - var(--zoom)) * 100%);
+  width:  calc(var(--zoom) * 100%);
+  height: calc(var(--zoom) * 100%);
+  max-width: none;
   object-fit: cover;
   object-position: center top;
 }
+
+.couple-card:first-child .couple-img-wrapper { --fx: 0.50; --fy: 0.16; }  
+.couple-card:last-child  .couple-img-wrapper { --fx: 0.55; --fy: 0.09; } 
 
 .couple-ampersand {
   flex: 0 0 3em;
