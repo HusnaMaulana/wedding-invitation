@@ -356,11 +356,9 @@ body.sidebar-open {
   letter-spacing: 6px;
   margin-top: 3px;
 }
-
 .quote-section {
   --border-h: max(34px, 2.47vw);   /* border height: 3546 / 87.5 ≈ 40.5 → 100vw / 40.5 */
   --overlap: 0.45;                 /* how far the lace pokes into the neighbouring sections (0–1) */
-
   position: relative;
   z-index: 2;                      /* sits above the sections before and after it */
   isolation: isolate;
@@ -372,7 +370,6 @@ body.sidebar-open {
   background: #f8f6e9 url("/assets/quote-section-bg.svg") center / cover no-repeat;
   text-align: center;
 }
-
 .qs-border {
   position: absolute;
   left: 50%;
@@ -386,33 +383,183 @@ body.sidebar-open {
 }
 .qs-border--top    { top:    calc(var(--border-h) * var(--overlap) * -1); }
 .qs-border--bottom { bottom: calc(var(--border-h) * var(--overlap) * -1); }
-
 .quote-section { overflow: visible; }
-
-/* Text */
 .quote-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: clamp(280px, 42vw, 620px);
+  max-width: clamp(300px, 50vw, 720px);
   margin-inline: auto;
 }
-
 .quote-text,
 .quote-source {
   margin: 0;
   font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
   font-style: italic;
   color: #3a2218;
-  font-size: clamp(0.95rem, 1.35vw + 0.4rem, 1.5rem);
+  font-size: clamp(1.1rem, 1.6vw + 0.5rem, 1.85rem);
   line-height: 1.5;
   text-wrap: balance;
 }
-
 .quote-source {
   margin-top: 0.6em;
 }
 
+.wedding-section {
+  --orn-w: clamp(180px, 32vw, 500px);   /* width of each bottom vine */
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--orange-hero);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.wedding-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/wedding-section-bg.svg") center / cover no-repeat;
+  z-index: 1;
+}
+
+.wedding-ornament {
+  position: absolute;
+  z-index: 2;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Top: V-shaped floral piece (2051 × 473), centered and full width */
+.wedding-ornament-top {
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(140%, 1200px);   /* wider than section so the sides overflow and get clipped */
+}
+
+/* Bottom: symmetric "tree" (552 × 947), half hidden off-screen at each corner */
+.wedding-ornament-bot-left,
+.wedding-ornament-bot-right {
+  width: var(--orn-w);
+  bottom: calc(var(--orn-w) * -0.75);   /* lower part sinks below the section */
+  z-index: 3;                            /* above the side triangles */
+  transform: none;                       /* the tree is symmetric, so no flip is needed */
+}
+.wedding-ornament-bot-left  { left:  calc(var(--orn-w) * -0.5); }
+.wedding-ornament-bot-right { right: calc(var(--orn-w) * -0.5); }
+/* ============================================================
+   WEDDING CONTENT
+   ============================================================ */
+.wedding-content {
+  /* base size: every other size below is in em, so the whole block scales together */
+  font-size: clamp(1.1rem, 0.6vw + 1.1rem, 1.7rem);
+  font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
+  color: var(--brown);
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: clamp(180px, 20vw, 320px) 24px clamp(70px, 8vw, 130px);
+}
+
+.wedding-bismillah {
+  display: block;
+  width: clamp(190px, 30vw, 340px);
+  max-width: 90%;
+  margin: 0 auto 2em;
+}
+
+.wedding-salam {
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin: 0 0 2em;
+}
+
+.wedding-intro,
+.wedding-outro {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 0 0 2.4em;
+  text-wrap: balance;
+}
+.wedding-outro { margin-bottom: 2em; }
+
+/* ---------- Couples ---------- */
+.wedding-couples {
+  --photo-w: clamp(140px, 18vw, 240px);
+  --photo-h: calc(var(--photo-w) / 0.82);   /* tall oval */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3.5em;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 3.6em;
+}
+
+.couple-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.couple-img-wrapper {
+  width: var(--photo-w);
+  height: var(--photo-h);
+  border-radius: 999px;          /* fully rounded top and bottom = oval */
+  overflow: hidden;
+  margin: 0;
+  box-shadow: none;
+}
+.couple-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.couple-ampersand {
+  flex: 0 0 3em;
+  font-family: var(--font-script);
+  font-size: 3.5em;
+  line-height: 1;
+  color: var(--cream);
+  /* centers the "&" on the photos */
+  margin-top: calc(var(--photo-h) / 2 - 0.5em);
+}
+
+.couple-name {
+  font-family: var(--font-script);
+  font-size: 2.05em;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 1.5em 0 0.5em;
+}
+.couple-title {
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-size: 0.46em;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+
+.couple-parents {
+  font-size: 0.93em;
+  line-height: 1.5;
+  margin: 0;
+}
 
 /* ============================================================
    RESPONSIVE — large tablets / small desktops (≤ 1200px)
@@ -499,7 +646,7 @@ body.sidebar-open {
   }
   .ornament-bottom-left {
     height: 35%;
-    max-height: 300px;
+    max-height: 380px;
     left: -2%;
   }
   .ornament-bottom-right {
@@ -507,6 +654,25 @@ body.sidebar-open {
     max-height: 380px;
     right: -2%;
   }
+  .wedding-couples {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  .couple-ampersand {
+    flex: none;
+    margin: 0;
+  }
+  .couple-card {
+    width: 100%;
+    flex: none;
+  }
+  .wedding-ornament-top {
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(140%, 1200px);  
+}
 }
 
 /* ============================================================
