@@ -6,13 +6,12 @@
   --brown: #432416;
   --brown-soft: #6a3a27;
   --white: #ffffff;
-
   --font-serif: "Libre Baskerville", "Baskerville", "Baskerville MT", Georgia, serif;
   --font-script: "Madina", "Great Vibes", "Brittany Signature", "Brush Script MT",
     "Segoe Script", cursive;
   --font-sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-}
 
+}
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -23,22 +22,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 img {
   max-width: 100%;
   height: auto;
 }
-
 /* ============================================================
    NAVBAR — Desktop
    ============================================================ */
@@ -49,19 +44,16 @@ img {
   width: 100%;
   z-index: 100;
 }
-
 .wedding-nav {
   background: transparent !important;
   padding: 14px 0;
 }
-
 .wedding-nav .navbar-nav {
   gap: 2px;
 }
-
 .wedding-nav .nav-link {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--brown) !important;
   letter-spacing: 0.5px;
@@ -70,12 +62,10 @@ img {
   white-space: nowrap;
   transition: color 0.3s ease, opacity 0.3s ease;
 }
-
 .wedding-nav .nav-link:hover,
 .wedding-nav .nav-link:focus {
   opacity: 0.65;
 }
-
 /* ============================================================
    MOBILE HAMBURGER BUTTON
    ============================================================ */
@@ -101,12 +91,10 @@ img {
   box-shadow: 0 2px 12px rgba(67, 36, 22, 0.15);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
 .mobile-nav-toggle:hover {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 18px rgba(67, 36, 22, 0.22);
 }
-
 .mobile-nav-toggle span {
   display: block;
   width: 22px;
@@ -115,7 +103,6 @@ img {
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
 /* ============================================================
    SIDEBAR OVERLAY
    ============================================================ */
@@ -128,12 +115,10 @@ img {
   opacity: 0;
   transition: opacity 0.35s ease;
 }
-
 .sidebar-overlay.active {
   display: block;
   opacity: 1;
 }
-
 /* ============================================================
    SIDEBAR DRAWER (Mobile Nav)
    ============================================================ */
@@ -156,11 +141,9 @@ img {
   overflow-y: auto;
   box-shadow: 4px 0 24px rgba(67, 36, 22, 0.12);
 }
-
 .sidebar-nav.active {
   transform: translateX(0);
 }
-
 /* Sidebar header */
 .sidebar-header {
   display: flex;
@@ -169,7 +152,6 @@ img {
   padding: 22px 24px 18px;
   border-bottom: 1px solid rgba(67, 36, 22, 0.08);
 }
-
 .sidebar-close {
   background: none;
   border: none;
@@ -187,34 +169,29 @@ img {
   transition: background 0.2s ease;
   flex-shrink: 0;
 }
-
 .sidebar-close:hover {
   background: rgba(67, 36, 22, 0.08);
 }
-
 .sidebar-title {
   font-family: var(--font-script);
-  font-size: 22px;
+  font-size: 38px;
   color: var(--brown);
   margin: 0;
+  padding-top: 15px;
   line-height: 1.2;
 }
-
 /* Sidebar menu links */
 .sidebar-menu {
   list-style: none;
   padding: 12px 0;
   margin: 0;
 }
-
 .sidebar-menu li {
   border-bottom: 1px solid rgba(67, 36, 22, 0.05);
 }
-
 .sidebar-menu li:last-child {
   border-bottom: none;
 }
-
 .sidebar-menu a {
   display: block;
   padding: 14px 28px;
@@ -227,7 +204,6 @@ img {
   text-transform: uppercase;
   transition: background 0.2s ease, padding-left 0.2s ease;
 }
-
 .sidebar-menu a:hover,
 .sidebar-menu a:focus {
   background: rgba(67, 36, 22, 0.06);
@@ -235,13 +211,11 @@ img {
   text-decoration: none;
   color: var(--brown);
 }
-
 /* Prevent body scroll when sidebar is open */
 body.sidebar-open {
   overflow: hidden;
 }
-
-/* ============================================================
+/* ===========================================================
    HERO SECTION
    ============================================================ */
 .hero-section {
@@ -253,8 +227,8 @@ body.sidebar-open {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
-
 .hero-section::before {
   content: "";
   position: absolute;
@@ -265,22 +239,18 @@ body.sidebar-open {
   background-repeat: no-repeat;
   z-index: 1;
 }
-
-
 .hero-ornament {
   position: absolute;
   z-index: 2;
   pointer-events: none;
   user-select: none;
 }
-
 .ornament-top-left {
   top: -10vw;
   left: -4%;
   width: 39%;
   max-width: none;
 }
-
 .ornament-top-center {
   top: -8vw;
   left: 50%;
@@ -288,14 +258,12 @@ body.sidebar-open {
   width: 43%;
   max-width: none;
 }
-
 .ornament-top-right {
   top: -10vw;
   right: -4%;
   width: 39%;
   max-width: none;
 }
-
 .ornament-right,
 .ornament-left {
   top: 0;
@@ -303,7 +271,6 @@ body.sidebar-open {
   width: 42px;
   object-fit: cover;
   object-position: center;
-
   /* Fade transparan di atas dan bawah */
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -314,7 +281,6 @@ body.sidebar-open {
     rgba(0, 0, 0, 0.4) 92%,
     transparent 100%
   );
-
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -325,16 +291,13 @@ body.sidebar-open {
     transparent 100%
   );
 }
-
 .ornament-right {
   right: 2%;
 }
-
 .ornament-left {
   left: 2%;
   transform: scaleX(-1);
 }
-
 .ornament-bottom-left {
   bottom: 0%;
   left: -1%;
@@ -343,7 +306,6 @@ body.sidebar-open {
   width: auto;
   transform: scaleX(-1);
 }
-
 .ornament-bottom-right {
   bottom: 0%;
   right: -1%;
@@ -351,7 +313,6 @@ body.sidebar-open {
   max-height: 460px;
   width: auto;
 }
-
 /* ============================================================
    HERO CONTENT (logo + text)
    ============================================================ */
@@ -365,13 +326,11 @@ body.sidebar-open {
   align-items: center;
   margin-top: 160px;
 }
-
 .hero-logo {
   width: 180px;
   height: auto;
   margin-bottom: 54px;
 }
-
 .hero-wedding-of {
   font-family: var(--font-serif);
   font-size: 28pt;
@@ -380,7 +339,6 @@ body.sidebar-open {
   letter-spacing: 5px;
   margin-bottom: 8px;
 }
-
 .hero-names {
   font-family: var(--font-script);
   font-size: 120pt;
@@ -390,7 +348,6 @@ body.sidebar-open {
   margin: 0;
   padding: 0;
 }
-
 .hero-date {
   font-family: var(--font-serif);
   font-size: 28pt;
@@ -400,6 +357,63 @@ body.sidebar-open {
   margin-top: 3px;
 }
 
+.quote-section {
+  --border-h: max(34px, 2.47vw);   /* border height: 3546 / 87.5 ≈ 40.5 → 100vw / 40.5 */
+  --overlap: 0.45;                 /* how far the lace pokes into the neighbouring sections (0–1) */
+
+  position: relative;
+  z-index: 2;                      /* sits above the sections before and after it */
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(260px, 40vw, 611px);   /* bg is 1512 × 611 */
+  padding: calc(var(--border-h) * 1.6) 1.25rem;
+  background: #f8f6e9 url("/assets/quote-section-bg.svg") center / cover no-repeat;
+  text-align: center;
+}
+
+.qs-border {
+  position: absolute;
+  left: 50%;
+  width: max(100%, 1400px);      /* stays full size on mobile; the extra width is cropped */
+  max-width: none;
+  height: var(--border-h);
+  object-fit: cover;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.qs-border--top    { top:    calc(var(--border-h) * var(--overlap) * -1); }
+.qs-border--bottom { bottom: calc(var(--border-h) * var(--overlap) * -1); }
+
+.quote-section { overflow: visible; }
+
+/* Text */
+.quote-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: clamp(280px, 42vw, 620px);
+  margin-inline: auto;
+}
+
+.quote-text,
+.quote-source {
+  margin: 0;
+  font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
+  font-style: italic;
+  color: #3a2218;
+  font-size: clamp(0.95rem, 1.35vw + 0.4rem, 1.5rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.quote-source {
+  margin-top: 0.6em;
+}
+
+
 /* ============================================================
    RESPONSIVE — large tablets / small desktops (≤ 1200px)
    ============================================================ */
@@ -407,17 +421,14 @@ body.sidebar-open {
   .hero-names {
     font-size: 90pt;
   }
-
   .hero-wedding-of,
   .hero-date {
     font-size: 22pt;
   }
-
   .hero-logo {
     width: 155px;
   }
 }
-
 /* ============================================================
    RESPONSIVE — tablets (≤ 992px)
    ============================================================ */
@@ -426,44 +437,35 @@ body.sidebar-open {
   .desktop-nav {
     display: none !important;
   }
-
   .mobile-nav-toggle {
     display: flex;
   }
-
   .sidebar-nav {
     display: flex;
   }
-
   .hero-names {
     font-size: 68pt;
   }
-
   .hero-wedding-of,
   .hero-date {
     font-size: 18pt;
     letter-spacing: 5px;
   }
-
   .hero-logo {
     width: 135px;
   }
-
   .hero-content {
     margin-top: 100px;
   }
-
   .ornament-bottom-left {
     height: 45%;
     max-height: 380px;
   }
-
   .ornament-bottom-right {
     height: 45%;
     max-height: 380px;
   }
 }
-
 /* ============================================================
    RESPONSIVE — small tablets / large phones (≤ 768px)
    ============================================================ */
@@ -471,27 +473,22 @@ body.sidebar-open {
   .hero-names {
     font-size: 48pt;
   }
-
   .hero-wedding-of,
   .hero-date {
     font-size: 15pt;
     letter-spacing: 4px;
   }
-
   .hero-logo {
     width: 115px;
   }
-
   .hero-content {
     padding: 80px 20px 70px;
     margin-top: 60px;
   }
-
   .ornament-top-center {
     width: 55%;
     max-width: 360px;
   }
-
   .ornament-top-left {
     width: 45%;
     opacity: 0.15;
@@ -500,13 +497,11 @@ body.sidebar-open {
     width: 45%;
     opacity: 0.15;
   }
-
   .ornament-bottom-left {
     height: 35%;
     max-height: 300px;
     left: -2%;
   }
-
   .ornament-bottom-right {
     height: 35%;
     max-height: 380px;
@@ -518,79 +513,74 @@ body.sidebar-open {
    RESPONSIVE — phones (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
- .hero-names {
-  font-size: 43pt;
-  line-height: 1.05;
-  white-space: nowrap;
-}
-
+  .hero-names {
+    font-size: 43pt;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
   .hero-wedding-of {
-  font-size: 14pt;
-  letter-spacing: 4px;
-  margin-bottom: 8px;
-  white-space: nowrap;
-}
-
-.hero-date {
-  font-size: 13pt;
-  letter-spacing: 4px;
-  margin-top: 22px;
-}
-
- .hero-logo {
-  width: 175px;
-  max-width: 52vw;
-  margin-bottom: 30px;
-}
-
- .hero-content {
-  width: 100%;
-  height: 100%;
-  padding: 0 35px;
-  margin-top: 0;
-  justify-content: center;
-}
-
-.ornament-top-center {
-  top: -1%;
-  left: 50%;
-  width: 58%;
-  max-width: none;
-}
-
-.ornament-top-left {
-  top: -1%;
-  left: -12%;
-  width: 48%;
-  opacity: 0.8;
-}
-
-.ornament-top-right {
-  top: -1%;
-  right: -12%;
-  width: 48%;
-  opacity: 0.8;
-}
-
-.ornament-bottom-left {
-  bottom: -1%;
-  left: -8%;
-  height: 30%;
-  max-height: 260px;
-}
-
-.ornament-bottom-right {
-  bottom: -1%;
-  right: -8%;
-  height: 30%;
-  max-height: 260px;
-}
-
+    font-size: 14pt;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+  }
+  .hero-date {
+    font-size: 13pt;
+    letter-spacing: 4px;
+    margin-top: 22px;
+  }
+  .hero-logo {
+    width: 175px;
+    max-width: 52vw;
+    margin-bottom: 30px;
+  }
+  .hero-content {
+    width: 100%;
+    height: 100%;
+    padding: 0 35px;
+    margin-top: 0;
+    justify-content: center;
+  }
+  .ornament-top-center {
+    top: -1%;
+    left: 50%;
+    width: 58%;
+    max-width: none;
+  }
+  .ornament-top-left {
+    top: -1%;
+    left: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
+  .ornament-top-right {
+    top: -1%;
+    right: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
+  .ornament-bottom-left {
+    bottom: -1%;
+    left: -8%;
+    height: 30%;
+    max-height: 260px;
+  }
+  .ornament-bottom-right {
+    bottom: -1%;
+    right: -8%;
+    height: 30%;
+    max-height: 260px;
+  }
   .ornament-right {
     width: 24px;
   }
-
   .ornament-left {
     width: 24px;
+  }
+  .quote-section {
+    padding-inline: 1rem;
+  }
+  .quote-content {
+    max-width: 100%;
   }
 }
