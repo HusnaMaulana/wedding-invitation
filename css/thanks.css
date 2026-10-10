@@ -1,0 +1,91 @@
+.thanks-section {
+  --border-h: max(34px, 2.47vw);
+  --overlap: 0.45;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: clamp(380px, 56.3vw, 860px);
+  padding: calc(var(--border-h) * 1.6) 1.25rem clamp(48px, 8.3vw, 150px);
+  background: #f8f6e9 url("../assets/quote-section-bg.svg") center / cover no-repeat;
+  text-align: center;
+  overflow: visible;
+}
+.thanks-border {
+  position: absolute;
+  left: 50%;
+  width: max(100%, 1400px);
+  max-width: none;
+  height: var(--border-h);
+  object-fit: cover;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+.thanks-border--top {
+  top: calc(var(--border-h) * var(--overlap) * -1);
+}
+.thanks-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.thanks-pattern {
+  position: absolute;
+  left: -0.7vw;
+  bottom: -9.32vw;
+  width: 100.vw;
+  max-width: none;
+  height: auto;
+  transform: rotate(180deg);
+}
+.thanks-ornament {
+  position: absolute;
+  bottom: -2.59vw;
+  width: 42.32vw;
+  max-width: none;
+  height: auto;
+  z-index: 1;
+}
+.thanks-ornament--right { right: -14.67vw; }
+.thanks-ornament--left  { left: -14.67vw; transform: scaleX(-1); }
+.thanks-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 70vw;
+  margin: clamp(70px, 14.7vw, 240px) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.thanks-title {
+  margin: 0;
+  font-family: var(--font-script, "Great Vibes", cursive);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.89vw, 6rem);
+  line-height: 1.1;
+  color: var(--brown, #432416);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+.thanks-text {
+  margin: clamp(10px, 1.4vw, 24px) 0 0;
+  font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
+  font-size: clamp(0.9rem, 1.944vw, 2rem);
+  line-height: 1.2;
+  color: var(--brown, #432416);
+}
+.thanks-logo {
+  display: block;
+  width: clamp(80px, 7.29vw, 130px);
+  height: auto;
+  margin-top: clamp(60px, 12.1vw, 200px);
+}
