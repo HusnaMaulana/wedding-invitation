@@ -1,0 +1,48 @@
+.quote-section {
+  --border-h: max(34px, 2.47vw);
+  --overlap: 0.45;
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(260px, 40vw, 611px);
+  padding: calc(var(--border-h) * 1.6) 1.25rem;
+  background: #f8f6e9 url("../assets/quote-section-bg.svg") center / cover no-repeat;
+  text-align: center;
+}
+.qs-border {
+  position: absolute;
+  left: 50%;
+  width: max(100%, 1400px);
+  max-width: none;
+  height: var(--border-h);
+  object-fit: cover;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.qs-border--top    { top:    calc(var(--border-h) * var(--overlap) * -1); }
+.qs-border--bottom { bottom: calc(var(--border-h) * var(--overlap) * -1); }
+.quote-section { overflow: visible; }
+.quote-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: clamp(300px, 50vw, 720px);
+  margin-inline: auto;
+}
+.quote-text,
+.quote-source {
+  margin: 0;
+  font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
+  font-style: italic;
+  color: #3a2218;
+  font-size: clamp(1.1rem, 1.6vw + 0.5rem, 1.85rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+.quote-source {
+  margin-top: 0.6em;
+}

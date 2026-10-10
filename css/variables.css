@@ -1,0 +1,14 @@
+:root {
+  --orange: #e77b2f;
+  --orange-deep: #d86524;
+  --orange-hero: #cc7e2e;
+  --cream: #F7E19F;
+  --brown: #432416;
+  --brown-soft: #6a3a27;
+  --white: #ffffff;
+  --font-serif: "Libre Baskerville", "Baskerville", "Baskerville MT", Georgia, serif;
+  --font-script: "Madina", "Great Vibes", "Brittany Signature", "Brush Script MT",
+    "Segoe Script", cursive;
+  --font-sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+
+}

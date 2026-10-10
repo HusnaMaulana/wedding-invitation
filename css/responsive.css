@@ -1,0 +1,178 @@
+@media (max-width: 1200px) {
+  .hero-names {
+    font-size: 90pt;
+  }
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 22pt;
+  }
+  .hero-logo {
+    width: 155px;
+  }
+}
+
+@media (max-width: 992px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  .sidebar-nav {
+    display: flex;
+  }
+  .hero-names {
+    font-size: 68pt;
+  }
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 18pt;
+    letter-spacing: 5px;
+  }
+  .hero-logo {
+    width: 135px;
+  }
+  .hero-content {
+    margin-top: 100px;
+  }
+  .ornament-bottom-left {
+    height: 45%;
+    max-height: 380px;
+  }
+  .ornament-bottom-right {
+    height: 45%;
+    max-height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-names {
+    font-size: 48pt;
+  }
+  .hero-wedding-of,
+  .hero-date {
+    font-size: 15pt;
+    letter-spacing: 4px;
+  }
+  .hero-logo {
+    width: 115px;
+  }
+  .hero-content {
+    padding: 80px 20px 70px;
+    margin-top: 60px;
+  }
+  .ornament-top-center {
+    width: 55%;
+    max-width: 360px;
+  }
+  .ornament-top-left {
+    width: 45%;
+    opacity: 0.15;
+  }
+  .ornament-top-right {
+    width: 45%;
+    opacity: 0.15;
+  }
+  .ornament-bottom-left {
+    height: 35%;
+    max-height: 380px;
+    left: -2%;
+  }
+  .ornament-bottom-right {
+    height: 35%;
+    max-height: 380px;
+    right: -2%;
+  }
+  .wedding-couples {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  .couple-ampersand {
+    flex: none;
+    margin: 0;
+  }
+  .couple-card {
+    width: 100%;
+    flex: none;
+  }
+  .wedding-ornament-top {
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(140%, 1200px);  
+}
+}
+
+@media (max-width: 480px) {
+  .hero-names {
+    font-size: 43pt;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+  .hero-wedding-of {
+    font-size: 14pt;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+  }
+  .hero-date {
+    font-size: 13pt;
+    letter-spacing: 4px;
+    margin-top: 22px;
+  }
+  .hero-logo {
+    width: 175px;
+    max-width: 52vw;
+    margin-bottom: 30px;
+  }
+  .hero-content {
+    width: 100%;
+    height: 100%;
+    padding: 0 35px;
+    margin-top: 0;
+    justify-content: center;
+  }
+  .ornament-top-center {
+    top: -1%;
+    left: 50%;
+    width: 58%;
+    max-width: none;
+  }
+  .ornament-top-left {
+    top: -1%;
+    left: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
+  .ornament-top-right {
+    top: -1%;
+    right: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
+  .ornament-bottom-left {
+    bottom: -1%;
+    left: -8%;
+    height: 30%;
+    max-height: 260px;
+  }
+  .ornament-bottom-right {
+    bottom: -1%;
+    right: -8%;
+    height: 30%;
+    max-height: 260px;
+  }
+  .ornament-right {
+    width: 24px;
+  }
+  .ornament-left {
+    width: 24px;
+  }
+  .quote-section {
+    padding-inline: 1rem;
+  }
+  .quote-content {
+    max-width: 100%;
+  }  
+}

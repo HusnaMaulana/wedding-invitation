@@ -1,0 +1,150 @@
+.wedding-section {
+  --orn-w: clamp(180px, 32vw, 500px);
+  position: relative;
+  min-height: 130vh;
+  width: 100%;
+  background-color: var(--orange-hero);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.wedding-section .ornament-left,
+.wedding-section .ornament-right {
+  width: clamp(18px, 3.2vw, 42px);
+}
+.wedding-section .ornament-left  { top: 20%; height: 60%; }
+.wedding-section .ornament-right { top: 15%; height: 58%; }
+.wedding-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/wedding-section-bg.svg") center / cover no-repeat;
+  z-index: 1;
+}
+.wedding-ornament {
+  position: absolute;
+  z-index: 2;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+.wedding-ornament-top {
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(140%, 1200px);
+}
+.wedding-ornament-bot-left,
+.wedding-ornament-bot-right {
+  width: var(--orn-w);
+  bottom: calc(var(--orn-w) * -0.75);
+  z-index: 3;
+  transform: none;
+}
+.wedding-ornament-bot-left  { left:  calc(var(--orn-w) * -0.5); }
+.wedding-ornament-bot-right { right: calc(var(--orn-w) * -0.5); }
+.wedding-content {
+  font-size: clamp(1.1rem, 0.6vw + 1.1rem, 1.7rem);
+  font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
+  color: var(--brown);
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: clamp(180px, 20vw, 320px) 24px clamp(70px, 8vw, 130px);
+}
+.wedding-bismillah {
+  display: block;
+  width: clamp(190px, 30vw, 340px);
+  max-width: 90%;
+  margin: 0 auto 2em;
+}
+.wedding-salam {
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin: 0 0 2em;
+}
+.wedding-intro,
+.wedding-outro {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 0 0 2.4em;
+  text-wrap: balance;
+}
+.wedding-outro { margin-bottom: 2em; }
+.wedding-couples {
+  --photo-w: clamp(140px, 18vw, 240px);
+  --photo-h: calc(var(--photo-w) / 0.82);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3.5em;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 3.6em;
+}
+.couple-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.couple-img-wrapper {
+  --zoom: 2.8;
+  --fx: 0.50;
+  --fy: 0.16;
+  position: relative;
+  width: var(--photo-w);
+  height: var(--photo-h);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0;
+  box-shadow: none;
+}
+.couple-img-wrapper img {
+  position: absolute;
+  left: calc(var(--fx) * (1 - var(--zoom)) * 100%);
+  top:  calc(var(--fy) * (1 - var(--zoom)) * 100%);
+  width:  calc(var(--zoom) * 100%);
+  height: calc(var(--zoom) * 100%);
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+}
+.couple-card:first-child .couple-img-wrapper { --fx: 0.50; --fy: 0.16; }  
+.couple-card:last-child  .couple-img-wrapper { --fx: 0.55; --fy: 0.09; } 
+.couple-ampersand {
+  flex: 0 0 3em;
+  font-family: var(--font-script);
+  font-size: 3.5em;
+  line-height: 1;
+  color: var(--cream);
+  margin-top: calc(var(--photo-h) / 2 - 0.5em);
+}
+.couple-name {
+  font-family: var(--font-script);
+  font-size: 2.05em;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 1.5em 0 0.5em;
+}
+.couple-title {
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-size: 0.46em;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+.couple-parents {
+  font-size: 0.93em;
+  line-height: 1.5;
+  margin: 0;
+}
