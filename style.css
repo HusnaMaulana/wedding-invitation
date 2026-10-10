@@ -3,47 +3,18 @@
    Modular CSS imports by section
    ============================================================ */
 
-/* Design tokens & Variables */
 @import url("css/variables.css");
-
-/* Opening letter */
 @import url("css/letter.css");
-
-/* Reset & Base Elements */
 @import url("css/base.css");
-
-/* Header, Navbar & Mobile Sidebar */
 @import url("css/navbar.css");
-
-/* Hero Section */
 @import url("css/hero.css");
-
-/* Quran Quote Section */
 @import url("css/quote.css");
-
-/* The Wedding & Couple Profiles */
 @import url("css/wedding.css");
-
-/* Countdown Timer */
 @import url("css/countdown.css");
-
-/* Event Location & Venue */
 @import url("css/location.css");
-
-/* Photo Gallery & Lightbox */
 @import url("css/gallery.css");
-
-/* RSVP Form & Confirmation */
 @import url("css/rsvp.css");
-
-/* Gift Section */
 @import url("css/gift.css");
-
-/* Wedding Wish / Messages */
 @import url("css/wedding-wish.css");
-
-/* Thanks */
 @import url("css/thanks.css");
-
-/* Responsive Media Queries */
 @import url("css/responsive.css");

@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
       duration: 800,
       easing: 'ease-in-out',
       once: true,
+      startEvent: 'aosStart',
     });
   }
 });
@@ -404,6 +405,10 @@ document.addEventListener('DOMContentLoaded', function () {
     $html.removeClass('letter-locked');
     $letter.addClass('is-leaving');
     window.scrollTo(0, 0);
+
+    setTimeout(function () {
+      document.dispatchEvent(new Event('aosStart'));
+    }, 400);
 
     setTimeout(function () {
       $letter.remove();
