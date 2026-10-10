@@ -1,24 +1,24 @@
+/* ==========================================================================
+   Wedding Wishes section
+   Layout, spacing, form controls, buttons and text helpers come from Bootstrap
+   4.6 classes in index.html. Only theme styling and the decorative ornaments
+   live here.
+   ========================================================================== */
+
 .wedding-wish-section {
-  position: relative;
-  min-height: 130vh;
-  width: 100%;
+  min-height: min(108vw, 1563px); /* reference artboard: 1440 x 1563 */
   background-color: var(--orange-hero);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1;
 }
 .wedding-wish-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/wedding-wish-bg.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("../assets/wedding-wish-bg.svg") center / cover no-repeat;
   z-index: 1;
 }
+
+/* ---- decorative ornaments ----------------------------------------------- */
 .wedding-wish-ornament {
   position: absolute;
   z-index: 2;
@@ -45,7 +45,7 @@
   width: var(--corner-width);
   height: auto;
   top: calc(var(--corner-width) * -0.65);
-  z-index: 1; 
+  z-index: 1;
 }
 .wedding-wish-corner-tl {
   left: calc(var(--corner-width) * -0.22);
@@ -55,47 +55,21 @@
   right: calc(var(--corner-width) * -0.22);
   transform: rotate(180deg) scaleX(-1);
 }
-.wedding-wish-center-top {
-  --center-width: clamp(280px, 42vw, 720px);
-  width: var(--center-width);
-  height: auto;
-  top: -10%;
-  left: 50%;
-  z-index: 1;
-  transform: translateX(-50%);
-}
+.wedding-wish-center-top,
 .wedding-wish-center-bot {
   --center-width: clamp(280px, 42vw, 720px);
   width: var(--center-width);
   height: auto;
-  bottom: -10%;
   left: 50%;
   z-index: 1;
+}
+.wedding-wish-center-top {
+  top: -10%;
+  transform: translateX(-50%);
+}
+.wedding-wish-center-bot {
+  bottom: -10%;
   transform: translateX(-50%) rotate(180deg);
-}
-.wedding-wish-section .ornament-left,
-.wedding-wish-section .ornament-right {
-  width: clamp(18px, 3.2vw, 42px);
-}
-.wedding-wish-section .ornament-left {
-  top: 20%;
-  height: 70%;
-}
-.wedding-wish-section .ornament-right {
-  top: 15%;
-  height: 58%;
-}
-.wedding-wish-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 700px;
-  margin-inline: auto;
-  padding: clamp(80px, 12vw, 180px) 24px clamp(60px, 8vw, 120px);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .wedding-wish-corner-bot {
   --bot-width: clamp(240px, 45vw, 540px);
@@ -112,89 +86,93 @@
   transform: scaleX(-1);
 }
 
-.wedding-wish-form,
-.wedding-wish-form *,
-.wedding-wish-divider,
-.wedding-wish-list,
-.wedding-wish-rule,
-.wedding-wish-more {
-    box-sizing: border-box;
+/* ---- side ornaments: same treatment as the hero section ------------------ */
+.wedding-wish-section .ornament-left,
+.wedding-wish-section .ornament-right {
+  --side-fade: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 15%,
+    black 18%,
+    black 82%,
+    rgba(0, 0, 0, 0.4) 92%,
+    transparent 100%
+  );
+  top: 0;
+  height: 100%;
+  width: clamp(20px, 2.81vw, 56px);
+  object-fit: cover;
+  opacity: 0.75;
+  z-index: 2;
+  -webkit-mask-image: var(--side-fade);
+  mask-image: var(--side-fade);
 }
+.wedding-wish-section .ornament-right {
+  right: 2.43vw;
+  object-position: 50% 0.15vw;
+}
+.wedding-wish-section .ornament-left {
+  left: 2.43vw;
+  object-position: 50% 1.7vw;
+  transform: scaleX(-1);
+}
+
+/* ---- content ------------------------------------------------------------ */
 .wedding-wish-content {
-  --wish-gold: #bfa66d;
-  --wish-radius: 4px;
-  --wish-field-height: 40px;
+  --wish-gold: #bfa66a;
+  z-index: 1;
+  padding-top: clamp(80px, 21vw, 302px); /* matches the reference at 1440px wide */
+  padding-bottom: clamp(150px, 14vw, 200px); /* keeps the last button clear of the bottom ornaments */
+  font-family: var(--font-serif);
+  /* 24px at a 1440px-wide viewport, matching the reference artboard */
+  font-size: clamp(0.95rem, 1.667vw, 1.5rem);
+  color: var(--brown);
 }
 .wedding-wish-title {
-  margin: 0;
   font-family: var(--font-script);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  font-size: 3.5em;
   line-height: 1.1;
   color: var(--cream);
 }
 .wedding-wish-title-ornament {
-  display: block;
-  width: clamp(130px, 24vw, 180px);
-  height: auto;
-  margin: 10px 0 clamp(28px, 5vw, 44px);
+  width: 11em;
 }
-.wedding-wish-form {
-  width: 100%;
-  max-width: 480px;
+.wedding-wish-body {
+  max-width: 30.4em;
 }
-.wedding-wish-input {
-  display: block;
-  width: 100%;
-  min-height: var(--wish-field-height);
-  padding: 0 24px;
-  border: 0;
-  border-radius: var(--wish-radius);
-  background: var(--white);
-  font-family: var(--font-serif);
-  font-size: 16px;
+
+/* ---- fields and buttons: Bootstrap controls, sized to the panel's font ---- */
+.wedding-wish-content .form-control,
+.wedding-wish-content .btn {
+  font-size: inherit;
+}
+.wedding-wish-content .form-control,
+.wedding-wish-content .btn,
+.wedding-wish-dropzone {
+  min-height: 2.5em;
+}
+.wedding-wish-content .form-control {
+  padding: 0.375rem 1.5em;
   color: var(--brown);
 }
-.wedding-wish-input::placeholder {
-  color: #9b9b9b;
-  opacity: 1;
+.wedding-wish-content .form-control:focus {
+  box-shadow: 0 0 0 2px var(--cream);
 }
-.wedding-wish-textarea {
-  height: 100px;
-  min-height: 100px;
-  margin-top: 8px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  resize: vertical;
-  text-align: left;
+.wedding-wish-content .btn:focus {
+  box-shadow: none;
 }
-.wedding-wish-input:focus-visible,
-.wedding-wish-send:focus-visible,
-.wedding-wish-more:focus-visible {
+.wedding-wish-content .btn:focus-visible {
   outline: 2px solid var(--cream);
   outline-offset: 2px;
 }
-.wedding-wish-upload-title {
-  margin: 20px 0 14px;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--brown);
+.wedding-wish-content .btn:hover {
+  filter: brightness(1.06);
 }
+
+/* dropzone (scripts.js toggles .is-dragover and .has-files) */
 .wedding-wish-dropzone {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: var(--wish-field-height);
-  margin: 0;
-  padding: 5px;
   border: 1px solid rgba(67, 36, 22, 0.45);
-  border-radius: var(--wish-radius);
-  background: var(--white);
-  font-family: var(--font-serif);
-  font-size: 16px;
   color: #8a8a8a;
-  text-align: left;
   cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -208,102 +186,31 @@
   color: var(--brown);
 }
 .wedding-wish-dropzone-plus {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 2px;
+  width: 1.8em;
+  height: 1.8em;
   background: var(--wish-gold);
 }
-.wedding-wish-dropzone-plus svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: var(--white);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-}
-.wedding-wish-dropzone-text {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.wedding-wish-rule {
-  width: 100%;
-  max-width: 480px;
-  height: 0;
-  margin: 18px 0;
-  border: 0;
-  border-top: 1px solid var(--brown-soft);
-  opacity: 0.8;
-}
-.wedding-wish-send,
-.wedding-wish-more {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  min-height: var(--wish-field-height);
-  padding: 0 24px;
-  border: 0;
-  border-radius: 999px;
-  font-family: var(--font-serif);
-  font-size: 16px;
-  cursor: pointer;
-  transition: filter 0.2s, transform 0.1s;
-}
+
 .wedding-wish-send {
   background: var(--wish-gold);
-  color: var(--white);
 }
 .wedding-wish-more {
-  max-width: 480px;
   background: var(--cream);
-  color: var(--brown);
 }
-.wedding-wish-send:hover,
-.wedding-wish-more:hover {
-  filter: brightness(1.06);
-}
-.wedding-wish-send:active,
-.wedding-wish-more:active {
-  transform: translateY(1px);
-}
-.wedding-wish-send:disabled {
-  opacity: 0.6;
-  cursor: progress;
-}
-.wedding-wish-send svg,
-.wedding-wish-more svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.wedding-wish-rule {
+  border-top-color: var(--brown-soft);
+  opacity: 0.8;
 }
 .wedding-wish-status {
   min-height: 1.4em;
-  margin: 10px 0 0;
-  font-family: var(--font-serif);
-  font-size: 0.9rem;
-  color: var(--brown);
 }
 .wedding-wish-status.is-error {
   color: #7a1d10;
   font-weight: 700;
 }
+
+/* ---- divider and message list ------------------------------------------- */
 .wedding-wish-divider {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 480px;
-  margin-top: 6px;
   color: var(--brown-soft);
 }
 .wedding-wish-divider::before,
@@ -313,41 +220,12 @@
   height: 1px;
   background: currentColor;
 }
-.wedding-wish-divider svg {
-  flex: none;
-  width: 14px;
-  height: 8px;
-  margin-top: 0;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1;
-}
 .wedding-wish-list {
-  width: 100%;
-  max-width: 480px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-align: left;
-  font-family: var(--font-serif);
-  color: var(--brown);
+  font-size: 1.17em;
 }
 .wedding-wish-list:not(.is-expanded) .wedding-wish-item:nth-child(n + 2) {
   display: none;
 }
-.wedding-wish-item {
-  padding: 6px 0;
-}
 .wedding-wish-item + .wedding-wish-item {
   border-top: 1px solid rgba(106, 58, 39, 0.35);
-}
-.wedding-wish-item-name {
-  display: block;
-  font-weight: 400;
-  font-size: 1.05rem;
-} 
-.wedding-wish-item-text {
-  margin: 0;
-  font-size: 1.05rem;
-  overflow-wrap: anywhere;
 }

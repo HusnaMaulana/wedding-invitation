@@ -65,73 +65,75 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (diff === 0) clearInterval(id);
 	}
 
-	const id = setInterval(tick, 1000); 
-	tick(); 
+	const id = setInterval(tick, 1000);
+	tick();
+})();
 
 (function () {
-	const track = document.getElementById("galleryTrack");
-	const prev = document.getElementById("galleryPrev");
-	const next = document.getElementById("galleryNext");
-	if (!track || !prev || !next) return;
+	const el = document.getElementById("gallerySwiper");
+	if (!el || typeof Swiper === "undefined") return;
 
-	const originals = Array.from(track.querySelectorAll(".g-item"));
-	const N = originals.length;
-	if (N === 0) return;
-
-	function makeClones() {
-		return originals.map((el, i) => {
-			const c = el.cloneNode(true);
-			c.removeAttribute("data-fancybox");
-			c.setAttribute("aria-hidden", "true");
-			c.setAttribute("tabindex", "-1");
-			c.dataset.clone = "true";
-			c.addEventListener("click", (e) => {
-				e.preventDefault();
-				originals[i].click();
-			});
-			return c;
-		});
-	}
-	makeClones().forEach((c) => track.insertBefore(c, originals[0]));
-	makeClones().forEach((c) => track.appendChild(c));
-
-	const step = () => originals[0].getBoundingClientRect().width;
-
-	function jumpTo(left) {
-		track.style.scrollSnapType = "none";
-		track.scrollTo({ left, behavior: "instant" });
-		requestAnimationFrame(() => (track.style.scrollSnapType = ""));
-	}
-
-	let index = N; 
-	jumpTo(N * step());
-
-	function go(delta) {
-		index += delta;
-		track.scrollTo({ left: index * step(), behavior: "smooth" });
-	}
-	next.addEventListener("click", () => go(1));
-	prev.addEventListener("click", () => go(-1));
-
-	let timer;
-	track.addEventListener(
-		"scroll",
-		() => {
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				let i = Math.round(track.scrollLeft / step());
-				if (i < N) i += N;
-				else if (i >= 2 * N) i -= N;
-				if (i !== Math.round(track.scrollLeft / step())) jumpTo(i * step());
-				index = i;
-			}, 120);
+	const swiper = new Swiper(el, {
+		loop: true,
+		speed: 600,
+		grabCursor: true,
+		keyboard: { enabled: true },
+		slidesPerView: 2,
+		breakpoints: {
+			768: { slidesPerView: 3 },
+			1200: { slidesPerView: 4 },
 		},
-		{ passive: true },
-	);
+		navigation: { prevEl: "#galleryPrev", nextEl: "#galleryNext" },
+		a11y: {
+			prevSlideMessage: "Foto sebelumnya",
+			nextSlideMessage: "Foto berikutnya",
+		},
+	});
 
-	window.addEventListener("resize", () => {
-		index = N + (((index % N) + N) % N);
-		jumpTo(index * step());
+	// Fancybox needs jQuery. Without it the links just open the photo.
+	if (typeof jQuery === "undefined" || !jQuery.fancybox) return;
+	const $ = jQuery;
+
+	// Swiper tags every slide with its original position, so the lightbox list
+	// stays in the right order even after loop mode moves or clones slides.
+	const originalIndex = (slide) => {
+		const i = slide.getAttribute("data-swiper-slide-index");
+		return i === null ? $(slide).index() : Number(i);
+	};
+	const photos = [];
+	$(el).find(".swiper-slide").each(function () {
+		const i = originalIndex(this);
+		if (!photos[i]) photos[i] = $(this).find("a")[0];
+	});
+
+	$(el).on("click", ".swiper-slide a", function (e) {
+		e.preventDefault();
+		const index = originalIndex($(this).closest(".swiper-slide")[0]);
+
+		$.fancybox.open(
+			photos,
+			{
+				loop: true,
+				backFocus: false,
+				buttons: ["zoom", "fullScreen", "close"],
+				lang: "id",
+				i18n: {
+					id: {
+						CLOSE: "Tutup",
+						NEXT: "Berikutnya",
+						PREV: "Sebelumnya",
+						ERROR: "Foto tidak dapat dimuat.",
+						ZOOM: "Perbesar",
+						FULL_SCREEN: "Layar penuh",
+					},
+				},
+				// Slider follows the lightbox, so you land where you left off
+				afterClose: function (instance, current) {
+					swiper.slideToLoop(current.index, 0);
+				},
+			},
+			index,
+		);
 	});
 })();
 
@@ -147,8 +149,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	const countResepsi = $("countResepsi");
 	const status = $("rsvpStatus");
 
-	const guest = new URLSearchParams(location.search).get("to");
-	if (guest) $("rsvpGuest").textContent = guest;
+	const guestInput = $("rsvpGuest");
+	const guestFromUrl = new URLSearchParams(location.search).get("to");
+	if (guestFromUrl) guestInput.value = guestFromUrl; // ?to=Nama keeps working, still editable
 
 	const val = (name) =>
 		form.querySelector(`input[name="${name}"]:checked`)?.value;
@@ -166,7 +169,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	form.addEventListener("submit", function (e) {
 		e.preventDefault();
-		const name = guest || "Tamu";
+		const name = guestInput.value.trim();
+		status.classList.toggle("text-danger", !name);
+		if (!name) {
+			status.textContent = "Mohon isi nama Anda terlebih dahulu.";
+			guestInput.focus();
+			return;
+		}
 		let msg;
 
 		if (val("attend") === "Hadir") {
@@ -276,14 +285,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function addWishToList(name, message) {
     var li = document.createElement('li');
-    li.className = 'wedding-wish-item';
+    li.className = 'wedding-wish-item py-1';
 
     var n = document.createElement('strong');
-    n.className = 'wedding-wish-item-name';
+    n.className = 'd-block font-weight-normal';
     n.textContent = name;
 
     var p = document.createElement('p');
-    p.className = 'wedding-wish-item-text';
+    p.className = 'mb-0 text-break';
     p.textContent = message;
 
     li.appendChild(n);
@@ -324,4 +333,4 @@ document.addEventListener('DOMContentLoaded', function () {
     moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     moreLabel.textContent = open ? 'Show less' : 'See all messages';
   });
-})()});
+})();

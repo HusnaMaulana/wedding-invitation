@@ -1,96 +1,141 @@
 .wedding-section {
-  --orn-w: clamp(180px, 32vw, 500px);
+  --u: calc(min(100vw, 1600px) / 1440);
+  --w-bg: var(--orange-hero, #d77434);
+  --w-brown: var(--brown, #432416);
+  --w-cream: var(--cream, #f7e19f);
+  --w-serif: "Libre Baskerville", Baskerville, "Baskerville Old Face", Georgia, serif;
+  --w-script: var(--font-script, "Great Vibes", cursive);
+  --w-fs: clamp(13px, calc(24.5 * var(--u)), 28px);
+  --w-fs-name: clamp(46px, calc(70 * var(--u)), 96px);
+  --w-photo-w: clamp(150px, calc(205 * var(--u)), 280px);
+  --w-photo-h: calc(var(--w-photo-w) * 1.35);
+
   position: relative;
-  min-height: 130vh;
   width: 100%;
-  background-color: var(--orange-hero);
+  min-height: calc(1601 * var(--u));
+  background-color: var(--w-bg);
   overflow: hidden;
+  isolation: isolate;
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1;
 }
-.wedding-section .ornament-left,
-.wedding-section .ornament-right {
-  width: clamp(18px, 3.2vw, 42px);
-}
-.wedding-section .ornament-left  { top: 20%; height: 60%; }
-.wedding-section .ornament-right { top: 15%; height: 58%; }
+
 .wedding-section::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url("../assets/wedding-section-bg.svg") center / cover no-repeat;
-  z-index: 1;
+  z-index: 0;
 }
-.wedding-ornament {
+.wedding-ornament,
+.wedding-side,
+.wedding-flower {
   position: absolute;
-  z-index: 2;
   max-width: none;
-  height: auto;
   pointer-events: none;
   user-select: none;
 }
 .wedding-ornament-top {
-  top: -15%;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
-  width: max(140%, 1200px);
+  width: max(142.44%, 860px);
+  height: auto;
+  transform: translate(-50%, -38.3%);
+  z-index: 2;
 }
-.wedding-ornament-bot-left,
-.wedding-ornament-bot-right {
-  width: var(--orn-w);
-  bottom: calc(var(--orn-w) * -0.75);
+.wedding-side {
+  top: 26%;
+  height: 54%;
+  width: clamp(20px, 2.81vw, 56px);
+  object-fit: cover;
+  object-position: 50% 50%;
+  opacity: 0.75;
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 10%,
+    #000 18%,
+    #000 82%,
+    rgba(0, 0, 0, 0.4) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 10%,
+    #000 18%,
+    #000 82%,
+    rgba(0, 0, 0, 0.4) 92%,
+    transparent 100%
+  );
+}
+.wedding-side--left {
+  left: 2.43vw;
+  transform: scaleX(-1);
+}
+.wedding-side--right {
+  right: 2.43vw;
+}
+.wedding-flower {
+  bottom: 0;
+  width: max(calc(552.4 * var(--u)), 260px);
+  height: auto;
   z-index: 3;
-  transform: none;
 }
-.wedding-ornament-bot-left  { left:  calc(var(--orn-w) * -0.5); }
-.wedding-ornament-bot-right { right: calc(var(--orn-w) * -0.5); }
+.wedding-flower--left {
+  left: 0;
+  transform: translate(-50%, 42.3%) scaleX(-1);
+}
+.wedding-flower--right {
+  right: 0;
+  transform: translate(50%, 42.3%) scaleX(-1);
+}
 .wedding-content {
-  font-size: clamp(1.1rem, 0.6vw + 1.1rem, 1.7rem);
-  font-family: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
-  color: var(--brown);
   position: relative;
   z-index: 10;
-  text-align: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: calc(1300 * var(--u));
   margin-inline: auto;
-  padding: clamp(180px, 20vw, 320px) 24px clamp(70px, 8vw, 130px);
+  padding: calc(276 * var(--u)) clamp(36px, 4vw, 90px) calc(119 * var(--u));
+  text-align: center;
+  font-family: var(--w-serif);
+  font-size: var(--w-fs);
+  line-height: 1.371;
+  color: var(--w-brown);
 }
 .wedding-bismillah {
   display: block;
-  width: clamp(190px, 30vw, 340px);
-  max-width: 90%;
-  margin: 0 auto 2em;
+  width: calc(328 * var(--u));
+  min-width: 200px;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto calc(54 * var(--u));
 }
 .wedding-salam {
   font-style: italic;
-  font-size: 0.95em;
-  line-height: 1.5;
-  margin: 0 0 2em;
+  margin: 0 0 calc(33 * var(--u));
+}
+.wedding-salam:last-child {
+  margin-bottom: 0;
 }
 .wedding-intro,
 .wedding-outro {
-  font-size: 1em;
-  line-height: 1.6;
-  margin: 0 0 2.4em;
+  margin: 0 0 calc(99 * var(--u));
   text-wrap: balance;
 }
-.wedding-outro { margin-bottom: 2em; }
+.wedding-outro {
+  margin-bottom: calc(32 * var(--u));
+}
 .wedding-couples {
-  --photo-w: clamp(140px, 18vw, 240px);
-  --photo-h: calc(var(--photo-w) / 0.82);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 3.5em;
+  display: grid;
+  grid-template-columns: 1fr calc(110 * var(--u)) 1fr;
+  align-items: start;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto 3.6em;
+  max-width: calc(1160 * var(--u));
+  margin: 0 auto calc(74 * var(--u));
 }
 .couple-card {
-  flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -98,53 +143,125 @@
 }
 .couple-img-wrapper {
   --zoom: 2.8;
-  --fx: 0.50;
+  --fx: 0.5;
   --fy: 0.16;
   position: relative;
-  width: var(--photo-w);
-  height: var(--photo-h);
-  border-radius: 999px;
-  overflow: hidden;
+  width: var(--w-photo-w);
+  height: var(--w-photo-h);
   margin: 0;
-  box-shadow: none;
+  overflow: hidden;
+  border-radius: 999px 999px 999px 999px;
+  background: rgba(247, 225, 159, 0.25);
 }
 .couple-img-wrapper img {
   position: absolute;
   left: calc(var(--fx) * (1 - var(--zoom)) * 100%);
-  top:  calc(var(--fy) * (1 - var(--zoom)) * 100%);
-  width:  calc(var(--zoom) * 100%);
+  top: calc(var(--fy) * (1 - var(--zoom)) * 100%);
+  width: calc(var(--zoom) * 100%);
   height: calc(var(--zoom) * 100%);
   max-width: none;
   object-fit: cover;
   object-position: center top;
 }
-.couple-card:first-child .couple-img-wrapper { --fx: 0.50; --fy: 0.16; }  
-.couple-card:last-child  .couple-img-wrapper { --fx: 0.55; --fy: 0.09; } 
+.couple-card:first-child .couple-img-wrapper {
+  --fx: 0.5;
+  --fy: 0.16;
+}
+.couple-card:last-child .couple-img-wrapper {
+  --fx: 0.55;
+  --fy: 0.09;
+}
 .couple-ampersand {
-  flex: 0 0 3em;
-  font-family: var(--font-script);
-  font-size: 3.5em;
+  height: var(--w-photo-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--w-script);
+  font-size: clamp(56px, calc(100 * var(--u)), 130px);
   line-height: 1;
-  color: var(--cream);
-  margin-top: calc(var(--photo-h) / 2 - 0.5em);
+  color: var(--w-cream);
 }
 .couple-name {
-  font-family: var(--font-script);
-  font-size: 2.05em;
+  margin: calc(62 * var(--u)) 0 calc(36 * var(--u));
+  font-family: var(--w-script);
+  font-size: var(--w-fs-name);
   font-weight: 400;
-  line-height: 1.15;
-  color: var(--cream);
-  margin: 1.5em 0 0.5em;
+  line-height: 1.09;
+  white-space: nowrap;
+  color: var(--w-cream);
 }
 .couple-title {
-  font-family: "EB Garamond", Garamond, Georgia, serif;
-  font-size: 0.46em;
+  font-family: var(--w-serif);
+  font-size: 0.42em;
   font-style: normal;
   letter-spacing: 0.02em;
-  color: var(--cream);
+  white-space: nowrap;
+  color: var(--w-cream);
 }
 .couple-parents {
-  font-size: 0.93em;
-  line-height: 1.5;
   margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .wedding-section {
+    --w-fs: 14px;
+    --w-fs-name: clamp(34px, 10.5vw, 58px);
+    --w-photo-w: min(56vw, 230px);
+    min-height: 0;
+  }
+  .wedding-content {
+    padding: 190px 40px 260px;
+    line-height: 1.55;
+  }
+  .wedding-bismillah {
+    width: min(70vw, 280px);
+    margin-bottom: 36px;
+  }
+  .wedding-salam {
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+  .wedding-intro,
+  .wedding-outro {
+    line-height: 1.6;
+    margin-bottom: 44px;
+  }
+  .wedding-intro br,
+  .wedding-outro br {
+    display: none;
+  }
+  .wedding-outro {
+    margin-bottom: 26px;
+  }
+  .wedding-couples {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-bottom: 44px;
+  }
+  .couple-ampersand {
+    height: auto;
+    margin: 18px 0;
+    font-size: 64px;
+  }
+  .couple-name {
+    margin: 22px 0 14px;
+  }
+  .couple-name,
+  .couple-parents {
+    white-space: normal;
+  }
+  .couple-title {
+    display: block;
+    margin-top: 0.15em;
+    font-size: 0.4em;
+  }
+  .couple-parents {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .wedding-side {
+    opacity: 0.55;
+  }
 }
