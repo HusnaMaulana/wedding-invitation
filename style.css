@@ -6,6 +6,9 @@
 /* Design tokens & Variables */
 @import url("css/variables.css");
 
+/* Opening letter */
+@import url("css/letter.css");
+
 /* Reset & Base Elements */
 @import url("css/base.css");
 
@@ -32,6 +35,9 @@
 
 /* RSVP Form & Confirmation */
 @import url("css/rsvp.css");
+
+/* Gift Section */
+@import url("css/gift.css");
 
 /* Wedding Wish / Messages */
 @import url("css/wedding-wish.css");

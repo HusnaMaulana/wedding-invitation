@@ -1,0 +1,127 @@
+html.letter-locked,
+html.letter-locked body {
+  height: 100%;
+  overflow: hidden;
+}
+html.letter-locked .header,
+html.letter-locked main > section:not(#home) {
+  visibility: hidden;
+}
+#home { transition: filter 0.9s ease; }
+html.letter-locked #home { filter: blur(10px); }
+
+.letter {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(67, 36, 22, 0.42);
+  overscroll-behavior: contain;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+html.letter-locked .letter { display: flex; }
+.letter.is-leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+.letter-card {
+  --brown: #432416;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(387px, 92vw, calc(92vh * 387 / 601));
+  width: min(387px, 92vw, calc(92dvh * 387 / 601));
+  aspect-ratio: 387 / 601;
+  container-type: inline-size;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #f8f7ea;
+  color: var(--brown);
+  text-align: center;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
+  animation: letter-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.letter-card:focus { outline: none; }
+@keyframes letter-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+.letter.is-leaving .letter-card { transform: translateY(-16px) scale(0.98); transition: transform 0.8s ease; }
+.letter-photo { flex: 0 0 46%; overflow: hidden; }
+.letter-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+.letter-body {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8cqw 4cqw;
+  background: #f8f7ea url("../assets/gift-pattern.svg") center / cover no-repeat;
+}
+.letter-body > :not(.letter-ornament) { position: relative; z-index: 1; }
+.letter-ornament {
+  position: absolute;
+  bottom: -9cqw;
+  width: 58cqw;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.letter-ornament--left  { left: -23cqw; }
+.letter-ornament--right { right: -23cqw; transform: scaleX(-1); }
+.letter-kicker,
+.letter-names,
+.letter-tagline { margin: 0; }
+.letter-kicker {
+  font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
+  font-size: 18px;
+  font-size: 4.65cqw;
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;         /* optically re-centres the tracked text */
+}
+.letter-names {
+  margin-top: 1.5cqw;
+  font-family: var(--font-script, "Great Vibes", cursive);
+  font-weight: 400;
+  font-size: 54px;
+  font-size: 16.5cqw;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.letter-tagline {
+  margin-top: 8cqw;
+  font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
+  font-size: 12px;
+  font-size: 3.4cqw;
+  line-height: 1.5;
+}
+.letter-btn {
+  margin-top: 5cqw;
+  padding: 0.55em 1.7em;
+  border: 0;
+  border-radius: 50rem;
+  background: var(--gold, #f6e09e);
+  color: var(--brown);
+  font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
+  font-size: 14px;
+  font-size: 3.9cqw;
+  line-height: 1.4;
+  box-shadow: 0 0.6em 1.2em rgba(67, 36, 22, 0.18);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.letter-btn:hover,
+.letter-btn:focus { background: #efd57f; color: var(--brown); }
+.letter-btn:focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; }
+.letter-btn:active { transform: scale(0.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .letter, .letter-card, #home { animation: none; transition: none; }
+}

@@ -1,0 +1,102 @@
+/* gift.css: Gift section. Same system as quote.css (reuses .qs-border from it). */
+.gift-section {
+  --border-h: max(46px, 6.08vw);
+  --overlap: 0.45;
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(360px, 40vw, 720px);
+  padding: calc(var(--border-h) * 1.1) 1.25rem;
+  background: #f8f6e9;
+  text-align: center;
+  overflow: visible;
+  color: var(--brown, #432416);
+  font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
+}
+
+.gift-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/gift-pattern.svg") center / cover no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gift-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.gift-title {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 4.5rem);
+  line-height: 1.1;
+}
+
+.gift-ornament {
+  display: block;
+  width: clamp(150px, 14vw, 230px);
+  height: auto;
+  margin: clamp(0.5rem, 0.9vw, 1rem) auto clamp(1.25rem, 2.4vw, 2.5rem);
+}
+
+.gift-text {
+  margin: 0 auto;
+  font-size: clamp(0.75rem, 1.55vw, 1.75rem);
+  line-height: 1.7;
+}
+
+.gift-account { margin-top: clamp(1.25rem, 2.6vw, 2.75rem); }
+.gift-account + .gift-account { margin-top: clamp(1.25rem, 2.2vw, 2.25rem); }
+
+.gift-bank,
+.gift-number,
+.gift-holder {
+  margin: 0 0 0.3em;
+  font-size: clamp(0.9rem, 1.7vw, 1.9rem);
+  line-height: 1.4;
+}
+.gift-number { letter-spacing: 0.05em; }
+
+.gift-copy {
+  margin-top: clamp(0.6rem, 1.4vw, 1.5rem);
+  min-width: 6em;
+  padding: 0.35em 1.6em;
+  border: 0;
+  border-radius: 50rem;
+  background: var(--gold, #f6e09e);
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(0.8rem, 1.4vw, 1.5rem);
+  line-height: 1.5;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.gift-copy:hover,
+.gift-copy:focus { background: #efd57f; color: inherit; box-shadow: none; }
+.gift-copy:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.gift-copy:active { transform: scale(0.97); }
+.gift-copy.is-copied { background: #d9e8b4; }
+
+.gift-status {
+  min-height: 1.5em;
+  margin: 0.6em 0 0;
+  font-size: clamp(0.7rem, 1vw, 1rem);
+}
+
+@media (min-width: 768px) {
+  .gift-text { white-space: nowrap; }
+}
+
+@media (max-width: 767px) {
+  .gift-section { padding-inline: 1rem; }
+  .gift-text { line-height: 1.8; text-wrap: balance; }
+  .gift-br { display: none; }
+}

@@ -334,3 +334,81 @@ document.addEventListener('DOMContentLoaded', function () {
     moreLabel.textContent = open ? 'Show less' : 'See all messages';
   });
 })();
+
+// Add inside scripts.js (jQuery is loaded before it). Gift section: copy account number.
+(function ($) {
+  var $status = $('#giftStatus');
+  var resetTimer;
+
+  // Old-browser / plain-HTTP fallback (Clipboard API needs HTTPS)
+  function fallbackCopy(text) {
+    var $tmp = $('<textarea readonly>')
+      .val(text)
+      .css({ position: 'fixed', top: 0, left: 0, opacity: 0 })
+      .appendTo('body');
+    $tmp[0].select();
+    $tmp[0].setSelectionRange(0, text.length); // iOS
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+    $tmp.remove();
+    return ok ? $.Deferred().resolve().promise() : $.Deferred().reject().promise();
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      var d = $.Deferred();
+      navigator.clipboard.writeText(text).then(d.resolve, function () {
+        fallbackCopy(text).then(d.resolve, d.reject);
+      });
+      return d.promise();
+    }
+    return fallbackCopy(text);
+  }
+
+  // Delegated, so extra .gift-copy buttons work without more JS
+  $(document).on('click', '.gift-copy', function () {
+    var $btn = $(this);
+    var number = $.trim($($btn.data('copy')).text()).replace(/\s+/g, '');
+    if (!number) return;
+
+    if (!$btn.data('label')) $btn.data('label', $btn.text());
+
+    copyText(number)
+      .done(function () {
+        $btn.text('Copied').addClass('is-copied');
+      })
+      .always(function () {
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          $btn.text($btn.data('label')).removeClass('is-copied');
+          $status.text('');
+        }, 2000);
+      });
+  });
+})(jQuery);
+
+(function ($) {
+  var $letter = $('#openingLetter');
+  if (!$letter.length) return;
+
+  var $html = $('html');
+  var $btn = $('#openInvitation');
+
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo(0, 0);
+  $html.addClass('letter-locked');
+  $letter.find('.letter-card').trigger('focus');
+
+  $btn.one('click', function () {
+    $html.removeClass('letter-locked');
+    $letter.addClass('is-leaving');
+    window.scrollTo(0, 0);
+
+    setTimeout(function () {
+      $letter.remove();
+      if (window.AOS) AOS.refresh();
+      $('#home').attr('tabindex', '-1')[0].focus({ preventScroll: true });
+    }, 850);
+  });
+})(jQuery);

@@ -19,9 +19,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('letter-locked');</script>
 </head>
 
 <body>
+  <div id="openingLetter" class="letter" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+    <div class="letter-card" tabindex="-1">
+      <div class="letter-photo">
+        <img src="assets/image-10.png" alt="Hani &amp; Andi" width="960" height="1294" decoding="async">
+      </div>
+
+      <div class="letter-body">
+        <img class="letter-ornament letter-ornament--left" src="assets/letter-ornament.svg" alt="" aria-hidden="true">
+        <img class="letter-ornament letter-ornament--right" src="assets/letter-ornament.svg" alt="" aria-hidden="true">
+
+        <p class="letter-kicker">THE WEDDING OF</p>
+        <h1 class="letter-names" id="letterTitle">Hani &amp; Andi</h1>
+        <p class="letter-tagline">We're inviting you to join our<br>joyful moment together</p>
+        <button type="button" class="btn letter-btn" id="openInvitation">Open Invitation</button>
+      </div>
+    </div>
+  </div>
+
   <header class="header">
     <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation menu">
       <span></span>
@@ -387,7 +406,33 @@
       </div>
     </section>
 
-    <section id="gift"
+    <section id="gift" class="gift-section" aria-label="Hadiah">
+      <img class="qs-border qs-border--top" src="assets/top-border-qs.svg" alt="" aria-hidden="true">
+
+      <div class="gift-content">
+        <h2 class="gift-title" data-aos="fade-up">Gift</h2>
+        <img class="gift-ornament" src="assets/rspv-ornament.svg" width="263" height="20" alt="" aria-hidden="true">
+
+        <p class="gift-text" data-aos="fade-up">
+          Kasih, doa, dan harapan baik dari Anda di hari pernikahan kami merupakan hadiah terindah bagi kami.<br
+            class="gift-br">
+          Namun, apabila Anda berkenan memberikan tanda kasih melalui nomor rekening yang telah kami sediakan,<br
+            class="gift-br">
+          Anda dapat dengan mudah mengirimkannya melalui transfer ke rekening bank kami.
+        </p>
+
+        <div class="gift-account" data-aos="fade-up">
+          <p class="gift-bank">Bank BCA</p>
+          <p class="gift-number" id="giftNumber1">1234567890</p>
+          <p class="gift-holder">Hani Putri</p>
+          <button type="button" class="btn gift-copy" data-copy="#giftNumber1">Copy</button>
+        </div>
+
+        <p class="gift-status" id="giftStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="messages"
       class="wedding-wish-section position-relative overflow-hidden d-flex align-items-start justify-content-center"
       aria-label="Wedding Wishes">
 
@@ -495,7 +540,7 @@
         loading="lazy" decoding="async">
     </section>
 
-    <section id="messages"
+    <section id="thanks"
       class="thanks-section position-relative d-flex align-items-start justify-content-center text-center px-3"
       aria-label="Terima kasih">
       <img class="thanks-border thanks-border--top position-absolute" src="assets/top-border-qs.svg" alt=""
