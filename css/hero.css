@@ -5,8 +5,9 @@
   background-color: var(--orange-hero);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-bottom: clamp(48px, 6.6vw, 120px);
   z-index: 1;
 }
 .hero-section::before {
@@ -15,42 +16,44 @@
   inset: 0;
   background-image: url("../assets/bg-1.png");
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   z-index: 1;
 }
 .hero-ornament {
   position: absolute;
   z-index: 2;
+  max-width: none;
+  height: auto;
   pointer-events: none;
   user-select: none;
 }
-.ornament-top-left {
-  top: -10vw;
-  left: -4%;
-  width: 39%;
-  max-width: none;
-}
 .ornament-top-center {
-  top: -8vw;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 43%;
-  max-width: none;
+  top: -6.93vw;
+  left: 29.62vw;
+  width: 39.72vw;
+  z-index: 2;
+}
+.ornament-top-left {
+  top: -7.68vw;
+  left: -6.29vw;
+  width: 39.72vw;
+  z-index: 3;
 }
 .ornament-top-right {
-  top: -10vw;
-  right: -4%;
-  width: 39%;
-  max-width: none;
+  top: -7.68vw;
+  right: -5.26vw;
+  width: 39.72vw;
+  z-index: 3;
 }
-.ornament-right,
-.ornament-left {
+.hero-section .ornament-right,
+.hero-section .ornament-left {
   top: 0;
   height: 100%;
-  width: 42px;
+  width: clamp(20px, 2.81vw, 56px);
   object-fit: cover;
-  object-position: center;
+  opacity: 0.75;
+  z-index: 2;
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -63,72 +66,106 @@
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 10%,
+    rgba(0, 0, 0, 0.4) 15%,
     black 18%,
     black 82%,
     rgba(0, 0, 0, 0.4) 92%,
     transparent 100%
   );
 }
-.ornament-right {
-  right: 2%;
+.hero-section .ornament-right {
+  right: 2.43vw;
+  object-position: 50% 0.15vw;
 }
-.ornament-left {
-  left: 2%;
+.hero-section .ornament-left {
+  left: 2.43vw;
+  object-position: 50% 1.7vw;
   transform: scaleX(-1);
 }
 .ornament-bottom-left {
-  bottom: 0%;
-  left: -1%;
-  height: 55%;
-  max-height: 460px;
-  width: auto;
-  transform: scaleX(-1);
+  left: -2.09vw;
+  bottom: 0.06vw;
+  width: 25.06vw;
 }
 .ornament-bottom-right {
-  bottom: 0%;
-  right: -1%;
-  height: 55%;
-  max-height: 460px;
-  width: auto;
+  right: -0.35vw;
+  bottom: -1.87vw;
+  width: 25.69vw;
 }
+
 .hero-content {
+  --hero-gap: clamp(14px, 1.8vw, 34px);
   position: relative;
-  z-index: 3;
+  z-index: 4;
+  margin-top: clamp(90px, 15.65vw, 300px);
+  padding: 0 24px;
   text-align: center;
-  padding: 90px 24px 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 160px;
 }
 .hero-logo {
-  width: 180px;
+  width: clamp(100px, 11.8vw, 220px);
   height: auto;
-  margin-bottom: 54px;
+  margin-bottom: var(--hero-gap);
 }
-.hero-wedding-of {
+.hero-wedding-of,
+.hero-date {
+  margin: 0;
   font-family: var(--font-serif);
-  font-size: 28pt;
+  font-size: clamp(0.85rem, 1.65vw, 1.9rem);
   font-weight: 400;
-  color: var(--brown);
-  letter-spacing: 5px;
-  margin-bottom: 8px;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  color: var(--brown, #432416);
 }
 .hero-names {
-  font-family: var(--font-script);
-  font-size: 120pt;
-  font-weight: 400;
-  color: var(--cream);
-  line-height: 1.15;
-  margin: 0;
+  margin: var(--hero-gap) 0 0;
   padding: 0;
+  font-family: var(--font-script);
+  font-size: clamp(3.1rem, 7.1vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #f7e19f;
 }
 .hero-date {
-  font-family: var(--font-serif);
-  font-size: 28pt;
-  font-weight: 400;
-  color: var(--brown);
-  letter-spacing: 6px;
-  margin-top: 3px;
+  margin-top: clamp(2px, 0.4vw, 8px);
+}
+
+@media (max-width: 767px), (orientation: portrait) {
+  .hero-section {
+    min-height: 100svh;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .hero-content { margin-top: 10vw; padding: 0 24px; }
+  .hero-logo {
+    width: clamp(100px, 25vw, 200px);
+    margin-bottom: clamp(14px, 3.6vw, 28px);
+  }
+  .hero-wedding-of,
+  .hero-date {
+    font-size: clamp(12px, 3vw, 24px);
+    white-space: nowrap;
+  }
+  .hero-names {
+    font-size: clamp(2.7rem, 13.3vw, 7rem);
+    white-space: nowrap;
+  }
+  .hero-date { margin-top: clamp(12px, 3.3vw, 26px); }
+  .hero-section .ornament-right,
+  .hero-section .ornament-left { width: clamp(20px, 5.2vw, 40px); }
+  .hero-section .ornament-right { right: 2vw; }
+  .hero-section .ornament-left  { left: 2vw; }
+  .ornament-top-center {
+    top: -9.8vw;
+    left: 50%;
+    width: 56vw;
+    transform: translateX(-50%);
+  }
+  .ornament-top-left  { top: -4vw; left: -12vw;  width: 46vw; opacity: 0.15; }
+  .ornament-top-right { top: -4vw; right: -12vw; width: 46vw; opacity: 0.15; }
+  .ornament-bottom-left  { left: -5vw;  bottom: 0; width: 36vw; }
+  .ornament-bottom-right { right: -2vw; bottom: 0; width: 33vw; }
 }

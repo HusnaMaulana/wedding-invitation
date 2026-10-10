@@ -164,3 +164,9 @@
 body.sidebar-open {
   overflow: hidden;
 }
+
+@media (max-width: 992px) {
+  .desktop-nav { display: none !important; }
+  .mobile-nav-toggle { display: flex; }
+  .sidebar-nav { display: flex; }
+}
