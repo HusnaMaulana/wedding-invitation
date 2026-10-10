@@ -168,4 +168,23 @@
   .ornament-top-right { top: -4vw; right: -12vw; width: 46vw; opacity: 0.15; }
   .ornament-bottom-left  { left: -5vw;  bottom: 0; width: 36vw; }
   .ornament-bottom-right { right: -2vw; bottom: 0; width: 33vw; }
+
+  .ornament-top-center {
+    top: -1%;
+    left: 50%;
+    width: 58%;
+    max-width: none;
+  }
+  .ornament-top-left {
+    top: -1%;
+    left: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
+  .ornament-top-right {
+    top: -1%;
+    right: -12%;
+    width: 48%;
+    opacity: 0.8;
+  }
 }
