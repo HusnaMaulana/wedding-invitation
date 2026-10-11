@@ -85,7 +85,7 @@ html.letter-locked .letter { display: flex; }
   font-size: 18px;
   font-size: 4.65cqw;
   letter-spacing: 0.2em;
-  padding-left: 0.2em;         /* optically re-centres the tracked text */
+  padding-left: 0.2em;
 }
 .letter-names {
   margin-top: 1.5cqw;

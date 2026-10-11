@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <title>The Wedding of Hani &amp; Andi</title>
   <meta name="description" content="Wedding invitation of Hani & Andi - 19.09.2026">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-1.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -488,9 +489,30 @@
           </div>
 
           <ul class="wedding-wish-list list-unstyled text-center mb-0" id="wishList" aria-label="Wishes from guests">
-            <li class="wedding-wish-item py-1">
-              <strong class="d-block font-weight-normal">Guest</strong>
-              <p class="mb-0 text-break">Wishing you all of the love and happiness!</p>
+            <li class="wedding-wish-item py-1" data-aos="fade-up">
+              <strong class="d-block font-weight-normal">Rian &amp; Maya</strong>
+              <p class="mb-0 text-break">Selamat menempuh hidup baru Hani &amp; Andi! Semoga menjadi keluarga yang
+                sakinah, mawaddah, warahmah.</p>
+            </li>
+            <li class="wedding-wish-item py-1" data-aos="fade-up" data-aos-delay="80">
+              <strong class="d-block font-weight-normal">Budi Santoso</strong>
+              <p class="mb-0 text-break">Happy Wedding Hani &amp; Andi! Wishing you both a lifetime of love and
+                happiness together.</p>
+            </li>
+            <li class="wedding-wish-item py-1" data-aos="fade-up" data-aos-delay="160">
+              <strong class="d-block font-weight-normal">Dimas Pratama</strong>
+              <p class="mb-0 text-break">Congratulations on your wedding day! Wishing you the very best for your new
+                journey together.</p>
+            </li>
+            <li class="wedding-wish-item py-1" data-aos="fade-up" data-aos-delay="240">
+              <strong class="d-block font-weight-normal">Dina Lestari</strong>
+              <p class="mb-0 text-break">Barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fii khoir. Selamat
+                berbahagia!</p>
+            </li>
+            <li class="wedding-wish-item py-1" data-aos="fade-up" data-aos-delay="320">
+              <strong class="d-block font-weight-normal">Siti &amp; Keluarga</strong>
+              <p class="mb-0 text-break">Selamat yaa! Semoga cinta kalian senantiasa bersemi dan selalu dilimpahi
+                keberkahan dan kebahagiaan.</p>
             </li>
           </ul>
 
@@ -544,12 +566,12 @@
         aria-hidden="true">
 
       <div class="thanks-bg position-absolute overflow-hidden" aria-hidden="true">
-        <img class="thanks-pattern position-absolute" src="assets/rspv-top-bot-patter-section.svg" alt="" loading="lazy"
-          decoding="async">
+        <img class="thanks-pattern position-absolute" src="assets/rspv-top-bot-patter-section.svg" alt=""
+          loading="lazy">
         <img class="thanks-ornament thanks-ornament--left position-absolute"
-          src="assets/thanks-bot-left-right-ornament.svg" alt="" loading="lazy" decoding="async">
+          src="assets/thanks-bot-left-right-ornament.svg" alt="">
         <img class="thanks-ornament thanks-ornament--right position-absolute"
-          src="assets/thanks-bot-left-right-ornament.svg" alt="" loading="lazy" decoding="async">
+          src="assets/thanks-bot-left-right-ornament.svg" alt="">
       </div>
 
       <div class="thanks-content position-relative w-100 mx-auto d-flex flex-column align-items-center">
@@ -565,12 +587,32 @@
     </section>
 
   </main>
+
+  <!-- Floating Audio Player -->
+  <button id="audioFab" type="button" class="audio-fab" aria-label="Play music" aria-pressed="false"
+    title="Play / Pause music" data-src="./assets/music.mp3">
+
+    <!-- Play icon -->
+    <span class="audio-fab__icon audio-fab__icon--play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </span>
+
+    <!-- Pause icon -->
+    <span class="audio-fab__icon audio-fab__icon--pause" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+      </svg>
+    </span>
+  </button>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script src="scripts.js"></script>
+  <script type="module" src="scripts.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,5 @@
-/* ==========================================================================
-   Wedding Wishes section
-   Layout, spacing, form controls, buttons and text helpers come from Bootstrap
-   4.6 classes in index.html. Only theme styling and the decorative ornaments
-   live here.
-   ========================================================================== */
-
 .wedding-wish-section {
-  min-height: min(108vw, 1563px); /* reference artboard: 1440 x 1563 */
+  min-height: min(108vw, 1563px); 
   background-color: var(--orange-hero);
   z-index: 1;
 }
@@ -17,8 +10,6 @@
   background: url("../assets/wedding-wish-bg.svg") center / cover no-repeat;
   z-index: 1;
 }
-
-/* ---- decorative ornaments ----------------------------------------------- */
 .wedding-wish-ornament {
   position: absolute;
   z-index: 2;
@@ -85,8 +76,6 @@
   right: calc(var(--bot-width) * -0.28);
   transform: scaleX(-1);
 }
-
-/* ---- side ornaments: same treatment as the hero section ------------------ */
 .wedding-wish-section .ornament-left,
 .wedding-wish-section .ornament-right {
   --side-fade: linear-gradient(
@@ -117,14 +106,12 @@
   transform: scaleX(-1);
 }
 
-/* ---- content ------------------------------------------------------------ */
 .wedding-wish-content {
   --wish-gold: #bfa66a;
   z-index: 1;
-  padding-top: clamp(80px, 21vw, 302px); /* matches the reference at 1440px wide */
-  padding-bottom: clamp(150px, 14vw, 200px); /* keeps the last button clear of the bottom ornaments */
+  padding-top: clamp(80px, 21vw, 302px);
+  padding-bottom: clamp(150px, 14vw, 200px);
   font-family: var(--font-serif);
-  /* 24px at a 1440px-wide viewport, matching the reference artboard */
   font-size: clamp(0.95rem, 1.667vw, 1.5rem);
   color: var(--brown);
 }
@@ -140,8 +127,6 @@
 .wedding-wish-body {
   max-width: 30.4em;
 }
-
-/* ---- fields and buttons: Bootstrap controls, sized to the panel's font ---- */
 .wedding-wish-content .form-control,
 .wedding-wish-content .btn {
   font-size: inherit;
@@ -168,8 +153,6 @@
 .wedding-wish-content .btn:hover {
   filter: brightness(1.06);
 }
-
-/* dropzone (scripts.js toggles .is-dragover and .has-files) */
 .wedding-wish-dropzone {
   border: 1px solid rgba(67, 36, 22, 0.45);
   color: #8a8a8a;
@@ -190,7 +173,6 @@
   height: 1.8em;
   background: var(--wish-gold);
 }
-
 .wedding-wish-send {
   background: var(--wish-gold);
 }
@@ -208,8 +190,6 @@
   color: #7a1d10;
   font-weight: 700;
 }
-
-/* ---- divider and message list ------------------------------------------- */
 .wedding-wish-divider {
   color: var(--brown-soft);
 }
@@ -222,6 +202,14 @@
 }
 .wedding-wish-list {
   font-size: 1.17em;
+   color: var(--brown, #432416);
+}
+.wedding-wish-item strong {
+  font-family: var(--font-script);
+  font-size: 2em;
+  line-height: 1.25;
+  color: var(--cream);
+
 }
 .wedding-wish-list:not(.is-expanded) .wedding-wish-item:nth-child(n + 2) {
   display: none;

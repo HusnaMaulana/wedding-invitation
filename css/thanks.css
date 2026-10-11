@@ -1,23 +1,15 @@
-/* ==========================================================================
-   Thanks section
-   Layout, alignment, spacing and responsive line breaks come from Bootstrap 4.6
-   classes in index.html. Only theme styling and the decorative images live here.
-   ========================================================================== */
-
 .thanks-section {
   --border-h: max(46px, 6.08vw);
   --overlap: 0.45;
   z-index: 2;
   isolation: isolate;
-  min-height: clamp(380px, 56.3vw, 860px); /* reference artboard: 1440 x 811 */
+  min-height: clamp(380px, 56.3vw, 860px);
   padding-top: calc(var(--border-h) * 1.6);
   padding-bottom: clamp(48px, 8.3vw, 150px);
   background: #f8f6e9 url("../assets/quote-section-bg.svg") center / cover no-repeat;
   color: var(--brown, #432416);
   font-family: var(--font-serif, "Libre Baskerville", Baskerville, Georgia, serif);
 }
-
-/* ---- top border (same recipe as .qs-border--top) -------------------------- */
 .thanks-border {
   left: 50%;
   width: max(100%, 1400px);
@@ -32,9 +24,6 @@
 .thanks-border--top {
   top: calc(var(--border-h) * var(--overlap) * -1);
 }
-
-
-/* ---- background pattern + florals ----------------------------------------- */
 .thanks-bg {
   inset: 0;
   pointer-events: none;
@@ -44,7 +33,7 @@
 .thanks-pattern {
   left: -0.7vw;
   bottom: -9.32vw;
-  width: 100vw; /* was "100.vw", which is invalid CSS and was ignored */
+  width: 100vw;
   max-width: none;
   transform: rotate(180deg);
 }
@@ -53,11 +42,19 @@
   width: 42.32vw;
   max-width: none;
   z-index: 1;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
-.thanks-ornament--right { right: -14.67vw; }
-.thanks-ornament--left  { left: -14.67vw; transform: scaleX(-1); }
-
-/* ---- content -------------------------------------------------------------- */
+.thanks-ornament--right {
+  right: -14.67vw;
+  transform: translateZ(0);
+}
+.thanks-ornament--left {
+  left: -14.67vw;
+  transform: scaleX(-1) translateZ(0);
+}
 .thanks-content {
   max-width: 70vw;
   margin-top: clamp(70px, 14.7vw, 240px);

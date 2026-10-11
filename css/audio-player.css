@@ -1,0 +1,82 @@
+/* ============================================================
+   FLOATING AUDIO PLAYER BUTTON
+   ============================================================ */
+
+.audio-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 950;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #faf4e7;
+  border: 1px solid rgba(106, 58, 39, 0.45);
+  /* outer shadow + inner border ring */
+  box-shadow:
+    0 4px 20px rgba(67, 36, 22, 0.18),
+    inset 0 0 0 3px rgba(106, 58, 39, 0.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.audio-fab:hover {
+  background: #fff8ec;
+  box-shadow:
+    0 6px 28px rgba(67, 36, 22, 0.26),
+    inset 0 0 0 3px rgba(106, 58, 39, 0.28);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.audio-fab:active {
+  transform: scale(0.95);
+}
+
+/* Ripple pulse when music is playing */
+.audio-fab.is-playing::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(231, 123, 47, 0.5);
+  animation: audio-pulse 1.8s ease-out infinite;
+}
+
+@keyframes audio-pulse {
+  0%   { transform: scale(1);    opacity: 0.7; }
+  100% { transform: scale(1.55); opacity: 0;   }
+}
+
+/* Icon containers */
+.audio-fab__icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.audio-fab__icon--play  { position: absolute; }
+.audio-fab__icon--pause { position: absolute; opacity: 0; transform: scale(0.8); }
+
+.audio-fab.is-playing .audio-fab__icon--play  { opacity: 0; transform: scale(0.8); }
+.audio-fab.is-playing .audio-fab__icon--pause { opacity: 1; transform: scale(1); }
+
+/* Music note animation on the button (subtle spin on the note svg) */
+.audio-fab__icon svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--brown);
+  transition: fill 0.2s ease;
+}

@@ -1,24 +1,16 @@
-/* ==========================================================================
-   RSVP section
-   Layout, spacing, flex, pill shape, button base and select styling come from
-   Bootstrap 4.6 utilities in index.html. Only theme-specific bits live here.
-   ========================================================================== */
-
 .rsvp-section {
   position: relative;
   z-index: 1;
 }
 
-/* ---- photo column ------------------------------------------------------- */
 .rsvp-photo img {
   object-fit: cover;
   object-position: center bottom;
 }
 @media (max-width: 991.98px) {
-  .rsvp-photo { min-height: 90vw; } /* stacked layout: give the photo a height */
+  .rsvp-photo { min-height: 90vw; }
 }
 
-/* ---- panel column ------------------------------------------------------- */
 .rsvp-panel {
   --rsvp-tan: #bfa66a;
   --rsvp-sand: #f6e09e;
@@ -26,11 +18,9 @@
   background: #f8f7ea;
   color: var(--brown);
   font-family: var(--font-serif);
-  /* 24px at a 1440px-wide viewport, matching the reference artboard */
   font-size: clamp(0.95rem, 1.667vw, 1.5rem);
 }
 
-/* top / bottom decorative pattern */
 .rsvp-panel::before,
 .rsvp-panel::after {
   content: "";
@@ -57,13 +47,11 @@
   max-width: 26em;
 }
 
-/* Bootstrap's .btn uses a fixed 1rem font; follow the panel's fluid size instead */
 .rsvp-panel .btn {
   font-size: inherit;
   line-height: 1.2;
 }
 
-/* ---- typography --------------------------------------------------------- */
 .rsvp-title {
   font-family: var(--font-script);
   font-size: 3.5em;
@@ -79,7 +67,6 @@
   text-wrap: balance;
 }
 
-/* ---- pills (radio labels) ----------------------------------------------- */
 .rsvp-pill {
   min-width: 6.8em;
   min-height: 3.5em;
@@ -98,8 +85,6 @@
   outline: 2px solid var(--brown);
   outline-offset: 3px;
 }
-
-/* ---- name input, selects, submit, status -------------------------------------------- */
 .rsvp-panel .custom-select:focus,
 .rsvp-panel .form-control:focus {
   box-shadow: 0 0 0 0.2rem rgba(191, 166, 106, 0.5);
