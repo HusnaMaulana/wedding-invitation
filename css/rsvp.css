@@ -11,11 +11,6 @@
   .rsvp-photo { min-height: 90vw; }
 }
 
-/* Desktop: keep the section tall enough that the photo is not cropped too much.
-   The section height comes from the form, which gets shorter when "Tidak Hadir"
-   hides the event/count fields. This minimum keeps both states about the same
-   height (and stops the section from jumping when switching).
-   Taller = more of the photo shows; change 56vw to adjust. */
 @media (min-width: 992px) {
   .rsvp-panel { min-height: 56vw; }
 }

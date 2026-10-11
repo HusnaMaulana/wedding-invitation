@@ -28,27 +28,15 @@
 .gallery-nav::after {
   display: none;
 }
-
-/* ── Fancybox lightbox ───────────────────────────────────── */
-
-/* NOTE: do not set max-width / max-height / overflow / padding on
-   .fancybox-content or on the lightbox <img>. Fancybox sizes and positions
-   the photo itself (inline width/height + transform), so forcing those
-   values makes the photo off-centre and cropped on mobile. */
-
-/* Always above the navbar and the opening-letter overlay */
 .fancybox-container {
   z-index: 99999;
 }
-
 .fancybox-bg {
   background: #000;
 }
 .fancybox-is-open .fancybox-bg {
   opacity: 0.92;
 }
-
-/* Toolbar: always visible, clear of notches / rounded corners */
 .fancybox-container .fancybox-toolbar {
   opacity: 1;
   visibility: visible;
@@ -71,24 +59,16 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Close button: slightly larger so it is easy to hit on desktop and mobile */
 .fancybox-toolbar .gallery-lightbox-close {
   width: 48px;
   height: 48px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.24);
 }
-
-/* The photo is never cropped: it is fitted inside its box and centred,
-   whatever global img rules the page has (e.g. object-fit: cover). */
 .fancybox-container .fancybox-image {
   object-fit: contain !important;
   object-position: center center !important;
 }
-
-/* Phones: the photo sits centred with margin on every side instead of
-   filling the screen. Top and bottom are equal so it is centred vertically
-   (the top margin also keeps it clear of the close button). */
 @media (max-width: 767px) {
   .fancybox-container .fancybox-slide--image {
     padding: calc(72px + env(safe-area-inset-top, 0px)) 20px

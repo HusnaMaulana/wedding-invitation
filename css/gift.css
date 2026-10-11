@@ -1,4 +1,3 @@
-/* gift.css: Gift section. Same system as quote.css (reuses .qs-border from it). */
 .gift-section {
   --border-h: max(46px, 6.08vw);
   --overlap: 0.45;

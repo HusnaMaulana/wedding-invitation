@@ -8,7 +8,6 @@ export function initNavbar() {
   const allNavLinks     = document.querySelectorAll('.wedding-nav .nav-link, .sidebar-menu a');
   const sections        = Array.from(document.querySelectorAll('section[id]'));
 
-  // Active section detection (ScrollSpy)
   function updateActiveSection() {
     const scrollPos = window.scrollY + 120;
     let currentId = '';
@@ -24,14 +23,12 @@ export function initNavbar() {
       }
     }
 
-    // If near bottom of the page, activate the last section
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 60) {
       if (sections.length > 0) {
         currentId = sections[sections.length - 1].getAttribute('id');
       }
     }
 
-    // Default to the first section if near top
     if (!currentId && sections.length > 0 && window.scrollY < (sections[0].offsetTop + 200)) {
       currentId = sections[0].getAttribute('id');
     }
@@ -48,7 +45,6 @@ export function initNavbar() {
     }
   }
 
-  // Floating navbar on scroll
   function handleScroll() {
     if (header) {
       if (window.scrollY > 25) {
@@ -64,7 +60,6 @@ export function initNavbar() {
   window.addEventListener('resize', updateActiveSection, { passive: true });
   handleScroll();
 
-  // Instant active link update on click
   allNavLinks.forEach((link) => {
     link.addEventListener('click', function () {
       const href = this.getAttribute('href');
@@ -75,7 +70,6 @@ export function initNavbar() {
     });
   });
 
-  // Mobile sidebar navigation
   if (sidebar) {
     function openSidebar() {
       sidebar.classList.add('active');

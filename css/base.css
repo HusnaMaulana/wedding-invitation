@@ -7,7 +7,7 @@
 }
 html {
   scroll-behavior: smooth;
-  overflow-x: clip; /* clip ≠ hidden — does NOT create a containing block for fixed elements */
+  overflow-x: clip; 
 }
 body {
   -webkit-font-smoothing: antialiased;

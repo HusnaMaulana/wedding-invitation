@@ -1,8 +1,3 @@
-/* ============================================================
-   MAIN SCRIPT
-   Modular ES imports by section
-   ============================================================ */
-
 import './js/navbar.js';
 import './js/aos.js';
 import './js/countdown.js';

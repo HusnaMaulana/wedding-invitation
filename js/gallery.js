@@ -32,8 +32,6 @@ export function initGallery() {
     if (!photos[i]) photos[i] = $(this).find("a")[0];
   });
 
-  // Close button template (replaces Fancybox's default one in the toolbar).
-  // `data-fancybox-close` is what makes Fancybox close on click.
   const closeBtn =
     '<button type="button" data-fancybox-close ' +
     'class="fancybox-button fancybox-button--close gallery-lightbox-close" ' +
@@ -55,18 +53,15 @@ export function initGallery() {
         animationEffect: "zoom",
         transitionEffect: "slide",
 
-        // Toolbar with a close button, kept on screen (no auto-hide after idle)
         buttons: ["zoom", "close"],
         btnTpl: { close: closeBtn },
         idleTime: false,
 
-        // Phones: a tap on the photo must not hide the toolbar (and the close
-        // button with it). Tapping the dark area around the photo closes it.
         mobile: {
           idleTime: false,
           clickContent: false,
           clickSlide: "close",
-          animationEffect: "fade", // zoom-from-thumbnail can land off-centre on phones
+          animationEffect: "fade", 
         },
 
         lang: "id",

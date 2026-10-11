@@ -18,7 +18,6 @@ export function initLetter() {
     $letter.addClass('is-leaving');
     window.scrollTo(0, 0);
 
-    // Signal other modules that the invitation has been opened
     document.dispatchEvent(new Event('letterOpen'));
 
     setTimeout(function () {
