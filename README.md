@@ -25,12 +25,6 @@ All libraries are loaded from CDN — **no build step required**.
 
 Open `index.html` directly in a browser, or serve the folder locally:
 
-### URL parameters
-
-| Parameter | Effect |
-|-----------|--------|
-| `?to=Nama%20Tamu` | Pre-fills the guest name in the RSVP form |
-
 ---
 
 ## Project Structure
